@@ -1,0 +1,570 @@
+   1              	 .cpu cortex-m0
+   2              	 .fpu softvfp
+   3              	 .eabi_attribute 20,1
+   4              	 .eabi_attribute 21,1
+   5              	 .eabi_attribute 23,3
+   6              	 .eabi_attribute 24,1
+   7              	 .eabi_attribute 25,1
+   8              	 .eabi_attribute 26,1
+   9              	 .eabi_attribute 30,6
+  10              	 .eabi_attribute 34,0
+  11              	 .eabi_attribute 18,4
+  12              	 .code 16
+  13              	 .file "mathfunc_operation.c"
+  14              	 .text
+  15              	.Ltext0:
+  16              	 .cfi_sections .debug_frame
+  17              	 .comm g_global_handle,24,4
+  18              	 .comm g_group_handle,20,4
+  19              	 .comm g_queue_handle,12,4
+  20              	 .comm g_queue_entry,16,4
+  21              	 .comm g_channel_handle,64,4
+  22              	 .comm g_result_handle,16,4
+  23              	 .comm adc_io,8,4
+  24              	 .comm relay_KMP,8,4
+  25              	 .comm relay_KMF,8,4
+  26              	 .comm relay_KDSG,8,4
+  27              	 .comm relay_KBAT,8,4
+  28              	 .section .bss.crc_tab16_init,"aw",%nobits
+  31              	crc_tab16_init:
+  32 0000 00       	 .space 1
+  33              	 .section .bss.crc_tab16,"aw",%nobits
+  34              	 .align 2
+  37              	crc_tab16:
+  38 0000 00000000 	 .space 512
+  38      00000000 
+  38      00000000 
+  38      00000000 
+  38      00000000 
+  39              	 .section .text.MF_CRC_16,"ax",%progbits
+  40              	 .align 2
+  41              	 .global MF_CRC_16
+  42              	 .code 16
+  43              	 .thumb_func
+  45              	MF_CRC_16:
+  46              	.LFB159:
+  47              	 .file 1 "../DeviceObject/mathfunction/mathfunc_operation.c"
+   1:../DeviceObject/mathfunction/mathfunc_operation.c **** /*
+   2:../DeviceObject/mathfunction/mathfunc_operation.c ****  * mathfunc_operation.c
+   3:../DeviceObject/mathfunction/mathfunc_operation.c ****  *
+   4:../DeviceObject/mathfunction/mathfunc_operation.c ****  *  Created on: Feb 14, 2020
+   5:../DeviceObject/mathfunction/mathfunc_operation.c ****  *      Author: lenovo
+   6:../DeviceObject/mathfunction/mathfunc_operation.c ****  */
+   7:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+   8:../DeviceObject/mathfunction/mathfunc_operation.c **** #include "mathfunc_operation.h"
+   9:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  10:../DeviceObject/mathfunction/mathfunc_operation.c **** static bool      crc_tab16_init = false;
+  11:../DeviceObject/mathfunction/mathfunc_operation.c **** static uint16_t  crc_tab16[256];
+  12:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  13:../DeviceObject/mathfunction/mathfunc_operation.c **** uint16_t MF_CRC_16(const unsigned char *input_str, unsigned char num_bytes)
+  14:../DeviceObject/mathfunction/mathfunc_operation.c **** {
+  48              	 .loc 1 14 0
+  49              	 .cfi_startproc
+  50 0000 80B5     	 push {r7,lr}
+  51              	.LCFI0:
+  52              	 .cfi_def_cfa_offset 8
+  53              	 .cfi_offset 7,-8
+  54              	 .cfi_offset 14,-4
+  55 0002 86B0     	 sub sp,sp,#24
+  56              	.LCFI1:
+  57              	 .cfi_def_cfa_offset 32
+  58 0004 00AF     	 add r7,sp,#0
+  59              	.LCFI2:
+  60              	 .cfi_def_cfa_register 7
+  61 0006 7860     	 str r0,[r7,#4]
+  62 0008 0A1C     	 mov r2,r1
+  63 000a FB1C     	 add r3,r7,#3
+  64 000c 1A70     	 strb r2,[r3]
+  15:../DeviceObject/mathfunction/mathfunc_operation.c **** 	uint16_t crc;
+  16:../DeviceObject/mathfunction/mathfunc_operation.c **** 	uint16_t tmp;
+  17:../DeviceObject/mathfunction/mathfunc_operation.c **** 	uint16_t short_c;
+  18:../DeviceObject/mathfunction/mathfunc_operation.c **** 	const unsigned char *ptr;
+  19:../DeviceObject/mathfunction/mathfunc_operation.c **** 	unsigned char a;
+  20:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  21:../DeviceObject/mathfunction/mathfunc_operation.c **** 	if (!crc_tab16_init) MF_Init_CRC16_Tab();
+  65              	 .loc 1 21 0
+  66 000e 274B     	 ldr r3,.L7
+  67 0010 1B78     	 ldrb r3,[r3]
+  68 0012 0122     	 mov r2,#1
+  69 0014 5340     	 eor r3,r2
+  70 0016 DBB2     	 uxtb r3,r3
+  71 0018 002B     	 cmp r3,#0
+  72 001a 01D0     	 beq .L2
+  73              	 .loc 1 21 0 is_stmt 0 discriminator 1
+  74 001c FFF7FEFF 	 bl MF_Init_CRC16_Tab
+  75              	.L2:
+  22:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  23:../DeviceObject/mathfunction/mathfunc_operation.c **** 	crc = CRC_START_16;
+  76              	 .loc 1 23 0 is_stmt 1
+  77 0020 1623     	 mov r3,#22
+  78 0022 FB18     	 add r3,r7,r3
+  79 0024 0022     	 mov r2,#0
+  80 0026 1A80     	 strh r2,[r3]
+  24:../DeviceObject/mathfunction/mathfunc_operation.c **** 	ptr = input_str;
+  81              	 .loc 1 24 0
+  82 0028 7B68     	 ldr r3,[r7,#4]
+  83 002a 3B61     	 str r3,[r7,#16]
+  25:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  26:../DeviceObject/mathfunction/mathfunc_operation.c **** 	if ( ptr != NULL ) for (a=0; a<num_bytes; a++) {
+  84              	 .loc 1 26 0
+  85 002c 3B69     	 ldr r3,[r7,#16]
+  86 002e 002B     	 cmp r3,#0
+  87 0030 35D0     	 beq .L3
+  88              	 .loc 1 26 0 is_stmt 0 discriminator 1
+  89 0032 0F23     	 mov r3,#15
+  90 0034 FB18     	 add r3,r7,r3
+  91 0036 0022     	 mov r2,#0
+  92 0038 1A70     	 strb r2,[r3]
+  93 003a 29E0     	 b .L4
+  94              	.L5:
+  27:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  28:../DeviceObject/mathfunction/mathfunc_operation.c **** 		short_c = 0x00ff & (uint16_t) *ptr;
+  95              	 .loc 1 28 0 is_stmt 1 discriminator 4
+  96 003c 3B69     	 ldr r3,[r7,#16]
+  97 003e 1A78     	 ldrb r2,[r3]
+  98 0040 0C23     	 mov r3,#12
+  99 0042 FB18     	 add r3,r7,r3
+ 100 0044 1A80     	 strh r2,[r3]
+  29:../DeviceObject/mathfunction/mathfunc_operation.c **** 		tmp     =  crc       ^ short_c;
+ 101              	 .loc 1 29 0 discriminator 4
+ 102 0046 0A23     	 mov r3,#10
+ 103 0048 FB18     	 add r3,r7,r3
+ 104 004a 1622     	 mov r2,#22
+ 105 004c B918     	 add r1,r7,r2
+ 106 004e 0C22     	 mov r2,#12
+ 107 0050 BA18     	 add r2,r7,r2
+ 108 0052 0988     	 ldrh r1,[r1]
+ 109 0054 1288     	 ldrh r2,[r2]
+ 110 0056 4A40     	 eor r2,r1
+ 111 0058 1A80     	 strh r2,[r3]
+  30:../DeviceObject/mathfunction/mathfunc_operation.c **** 		crc     = (crc >> 8) ^ crc_tab16[ tmp & 0xff ];
+ 112              	 .loc 1 30 0 discriminator 4
+ 113 005a 1623     	 mov r3,#22
+ 114 005c FB18     	 add r3,r7,r3
+ 115 005e 1B88     	 ldrh r3,[r3]
+ 116 0060 1B0A     	 lsr r3,r3,#8
+ 117 0062 99B2     	 uxth r1,r3
+ 118 0064 0A23     	 mov r3,#10
+ 119 0066 FB18     	 add r3,r7,r3
+ 120 0068 1B88     	 ldrh r3,[r3]
+ 121 006a FF22     	 mov r2,#255
+ 122 006c 1A40     	 and r2,r3
+ 123 006e 104B     	 ldr r3,.L7+4
+ 124 0070 5200     	 lsl r2,r2,#1
+ 125 0072 D25A     	 ldrh r2,[r2,r3]
+ 126 0074 1623     	 mov r3,#22
+ 127 0076 FB18     	 add r3,r7,r3
+ 128 0078 4A40     	 eor r2,r1
+ 129 007a 1A80     	 strh r2,[r3]
+  31:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  32:../DeviceObject/mathfunction/mathfunc_operation.c **** 		ptr++;
+ 130              	 .loc 1 32 0 discriminator 4
+ 131 007c 3B69     	 ldr r3,[r7,#16]
+ 132 007e 0133     	 add r3,r3,#1
+ 133 0080 3B61     	 str r3,[r7,#16]
+  26:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+ 134              	 .loc 1 26 0 discriminator 4
+ 135 0082 0F23     	 mov r3,#15
+ 136 0084 FB18     	 add r3,r7,r3
+ 137 0086 1A78     	 ldrb r2,[r3]
+ 138 0088 0F23     	 mov r3,#15
+ 139 008a FB18     	 add r3,r7,r3
+ 140 008c 0132     	 add r2,r2,#1
+ 141 008e 1A70     	 strb r2,[r3]
+ 142              	.L4:
+  26:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+ 143              	 .loc 1 26 0 is_stmt 0 discriminator 2
+ 144 0090 0F23     	 mov r3,#15
+ 145 0092 FA18     	 add r2,r7,r3
+ 146 0094 FB1C     	 add r3,r7,#3
+ 147 0096 1278     	 ldrb r2,[r2]
+ 148 0098 1B78     	 ldrb r3,[r3]
+ 149 009a 9A42     	 cmp r2,r3
+ 150 009c CED3     	 bcc .L5
+ 151              	.L3:
+  33:../DeviceObject/mathfunction/mathfunc_operation.c **** 	}
+  34:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  35:../DeviceObject/mathfunction/mathfunc_operation.c **** 	return crc;
+ 152              	 .loc 1 35 0 is_stmt 1
+ 153 009e 1623     	 mov r3,#22
+ 154 00a0 FB18     	 add r3,r7,r3
+ 155 00a2 1B88     	 ldrh r3,[r3]
+  36:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  37:../DeviceObject/mathfunction/mathfunc_operation.c **** }  /* crc_16 */
+ 156              	 .loc 1 37 0
+ 157 00a4 181C     	 mov r0,r3
+ 158 00a6 BD46     	 mov sp,r7
+ 159 00a8 06B0     	 add sp,sp,#24
+ 160              	 
+ 161 00aa 80BD     	 pop {r7,pc}
+ 162              	.L8:
+ 163              	 .align 2
+ 164              	.L7:
+ 165 00ac 00000000 	 .word crc_tab16_init
+ 166 00b0 00000000 	 .word crc_tab16
+ 167              	 .cfi_endproc
+ 168              	.LFE159:
+ 170              	 .section .text.MF_Init_CRC16_Tab,"ax",%progbits
+ 171              	 .align 2
+ 172              	 .global MF_Init_CRC16_Tab
+ 173              	 .code 16
+ 174              	 .thumb_func
+ 176              	MF_Init_CRC16_Tab:
+ 177              	.LFB160:
+  38:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  39:../DeviceObject/mathfunction/mathfunc_operation.c **** void MF_Init_CRC16_Tab(void)
+  40:../DeviceObject/mathfunction/mathfunc_operation.c **** {
+ 178              	 .loc 1 40 0
+ 179              	 .cfi_startproc
+ 180 0000 80B5     	 push {r7,lr}
+ 181              	.LCFI3:
+ 182              	 .cfi_def_cfa_offset 8
+ 183              	 .cfi_offset 7,-8
+ 184              	 .cfi_offset 14,-4
+ 185 0002 82B0     	 sub sp,sp,#8
+ 186              	.LCFI4:
+ 187              	 .cfi_def_cfa_offset 16
+ 188 0004 00AF     	 add r7,sp,#0
+ 189              	.LCFI5:
+ 190              	 .cfi_def_cfa_register 7
+  41:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  42:../DeviceObject/mathfunction/mathfunc_operation.c **** 	uint16_t i;
+  43:../DeviceObject/mathfunction/mathfunc_operation.c **** 	uint16_t j;
+  44:../DeviceObject/mathfunction/mathfunc_operation.c **** 	uint16_t crc;
+  45:../DeviceObject/mathfunction/mathfunc_operation.c **** 	uint16_t c;
+  46:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  47:../DeviceObject/mathfunction/mathfunc_operation.c **** 	for (i=0; i<256; i++) {
+ 191              	 .loc 1 47 0
+ 192 0006 BB1D     	 add r3,r7,#6
+ 193 0008 0022     	 mov r2,#0
+ 194 000a 1A80     	 strh r2,[r3]
+ 195 000c 3CE0     	 b .L10
+ 196              	.L15:
+  48:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  49:../DeviceObject/mathfunction/mathfunc_operation.c **** 		crc = 0;
+ 197              	 .loc 1 49 0
+ 198 000e BB1C     	 add r3,r7,#2
+ 199 0010 0022     	 mov r2,#0
+ 200 0012 1A80     	 strh r2,[r3]
+  50:../DeviceObject/mathfunction/mathfunc_operation.c **** 		c   = i;
+ 201              	 .loc 1 50 0
+ 202 0014 3B1C     	 mov r3,r7
+ 203 0016 BA1D     	 add r2,r7,#6
+ 204 0018 1288     	 ldrh r2,[r2]
+ 205 001a 1A80     	 strh r2,[r3]
+  51:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  52:../DeviceObject/mathfunction/mathfunc_operation.c **** 		for (j=0; j<8; j++) {
+ 206              	 .loc 1 52 0
+ 207 001c 3B1D     	 add r3,r7,#4
+ 208 001e 0022     	 mov r2,#0
+ 209 0020 1A80     	 strh r2,[r3]
+ 210 0022 21E0     	 b .L11
+ 211              	.L14:
+  53:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  54:../DeviceObject/mathfunction/mathfunc_operation.c **** 			if ( (crc ^ c) & 0x0001 ) crc = ( crc >> 1 ) ^ CRC_POLY_16;
+ 212              	 .loc 1 54 0
+ 213 0024 BA1C     	 add r2,r7,#2
+ 214 0026 3B1C     	 mov r3,r7
+ 215 0028 1288     	 ldrh r2,[r2]
+ 216 002a 1B88     	 ldrh r3,[r3]
+ 217 002c 5340     	 eor r3,r2
+ 218 002e 9BB2     	 uxth r3,r3
+ 219 0030 1A1C     	 mov r2,r3
+ 220 0032 0123     	 mov r3,#1
+ 221 0034 1340     	 and r3,r2
+ 222 0036 08D0     	 beq .L12
+ 223              	 .loc 1 54 0 is_stmt 0 discriminator 1
+ 224 0038 BB1C     	 add r3,r7,#2
+ 225 003a 1B88     	 ldrh r3,[r3]
+ 226 003c 5B08     	 lsr r3,r3,#1
+ 227 003e 9AB2     	 uxth r2,r3
+ 228 0040 BB1C     	 add r3,r7,#2
+ 229 0042 1649     	 ldr r1,.L16
+ 230 0044 4A40     	 eor r2,r1
+ 231 0046 1A80     	 strh r2,[r3]
+ 232 0048 04E0     	 b .L13
+ 233              	.L12:
+  55:../DeviceObject/mathfunction/mathfunc_operation.c **** 			else                      crc =   crc >> 1;
+ 234              	 .loc 1 55 0 is_stmt 1
+ 235 004a BB1C     	 add r3,r7,#2
+ 236 004c BA1C     	 add r2,r7,#2
+ 237 004e 1288     	 ldrh r2,[r2]
+ 238 0050 5208     	 lsr r2,r2,#1
+ 239 0052 1A80     	 strh r2,[r3]
+ 240              	.L13:
+  56:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  57:../DeviceObject/mathfunction/mathfunc_operation.c **** 			c = c >> 1;
+ 241              	 .loc 1 57 0 discriminator 2
+ 242 0054 3B1C     	 mov r3,r7
+ 243 0056 3A1C     	 mov r2,r7
+ 244 0058 1288     	 ldrh r2,[r2]
+ 245 005a 5208     	 lsr r2,r2,#1
+ 246 005c 1A80     	 strh r2,[r3]
+  52:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+ 247              	 .loc 1 52 0 discriminator 2
+ 248 005e 3B1D     	 add r3,r7,#4
+ 249 0060 1A88     	 ldrh r2,[r3]
+ 250 0062 3B1D     	 add r3,r7,#4
+ 251 0064 0132     	 add r2,r2,#1
+ 252 0066 1A80     	 strh r2,[r3]
+ 253              	.L11:
+  52:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+ 254              	 .loc 1 52 0 is_stmt 0 discriminator 1
+ 255 0068 3B1D     	 add r3,r7,#4
+ 256 006a 1B88     	 ldrh r3,[r3]
+ 257 006c 072B     	 cmp r3,#7
+ 258 006e D9D9     	 bls .L14
+  58:../DeviceObject/mathfunction/mathfunc_operation.c **** 		}
+  59:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  60:../DeviceObject/mathfunction/mathfunc_operation.c **** 		crc_tab16[i] = crc;
+ 259              	 .loc 1 60 0 is_stmt 1 discriminator 2
+ 260 0070 BB1D     	 add r3,r7,#6
+ 261 0072 1A88     	 ldrh r2,[r3]
+ 262 0074 0A4B     	 ldr r3,.L16+4
+ 263 0076 5200     	 lsl r2,r2,#1
+ 264 0078 B91C     	 add r1,r7,#2
+ 265 007a 0988     	 ldrh r1,[r1]
+ 266 007c D152     	 strh r1,[r2,r3]
+  47:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+ 267              	 .loc 1 47 0 discriminator 2
+ 268 007e BB1D     	 add r3,r7,#6
+ 269 0080 1A88     	 ldrh r2,[r3]
+ 270 0082 BB1D     	 add r3,r7,#6
+ 271 0084 0132     	 add r2,r2,#1
+ 272 0086 1A80     	 strh r2,[r3]
+ 273              	.L10:
+  47:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+ 274              	 .loc 1 47 0 is_stmt 0 discriminator 1
+ 275 0088 BB1D     	 add r3,r7,#6
+ 276 008a 1B88     	 ldrh r3,[r3]
+ 277 008c FF2B     	 cmp r3,#255
+ 278 008e BED9     	 bls .L15
+  61:../DeviceObject/mathfunction/mathfunc_operation.c **** 	}
+  62:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  63:../DeviceObject/mathfunction/mathfunc_operation.c **** 	crc_tab16_init = true;
+ 279              	 .loc 1 63 0 is_stmt 1
+ 280 0090 044B     	 ldr r3,.L16+8
+ 281 0092 0122     	 mov r2,#1
+ 282 0094 1A70     	 strb r2,[r3]
+  64:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  65:../DeviceObject/mathfunction/mathfunc_operation.c **** }  /* init_crc16_tab */
+ 283              	 .loc 1 65 0
+ 284 0096 BD46     	 mov sp,r7
+ 285 0098 02B0     	 add sp,sp,#8
+ 286              	 
+ 287 009a 80BD     	 pop {r7,pc}
+ 288              	.L17:
+ 289              	 .align 2
+ 290              	.L16:
+ 291 009c 01A0FFFF 	 .word -24575
+ 292 00a0 00000000 	 .word crc_tab16
+ 293 00a4 00000000 	 .word crc_tab16_init
+ 294              	 .cfi_endproc
+ 295              	.LFE160:
+ 297              	 .section .text.MF_MovingAverage,"ax",%progbits
+ 298              	 .align 2
+ 299              	 .global MF_MovingAverage
+ 300              	 .code 16
+ 301              	 .thumb_func
+ 303              	MF_MovingAverage:
+ 304              	.LFB161:
+  66:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  67:../DeviceObject/mathfunction/mathfunc_operation.c **** void MF_MovingAverage(PDU_SENSOR_AVG_t *sensorAvg, PDU_SENSOR_RAW_t *sensorRaw)
+  68:../DeviceObject/mathfunction/mathfunc_operation.c **** {
+ 305              	 .loc 1 68 0
+ 306              	 .cfi_startproc
+ 307 0000 80B5     	 push {r7,lr}
+ 308              	.LCFI6:
+ 309              	 .cfi_def_cfa_offset 8
+ 310              	 .cfi_offset 7,-8
+ 311              	 .cfi_offset 14,-4
+ 312 0002 82B0     	 sub sp,sp,#8
+ 313              	.LCFI7:
+ 314              	 .cfi_def_cfa_offset 16
+ 315 0004 00AF     	 add r7,sp,#0
+ 316              	.LCFI8:
+ 317              	 .cfi_def_cfa_register 7
+ 318 0006 7860     	 str r0,[r7,#4]
+ 319 0008 3960     	 str r1,[r7]
+  69:../DeviceObject/mathfunction/mathfunc_operation.c **** 	static PDU_SENSOR_AVG_t sensorAvgBuff;
+  70:../DeviceObject/mathfunction/mathfunc_operation.c **** 	static uint8_t count = 0;
+  71:../DeviceObject/mathfunction/mathfunc_operation.c **** 	sensorAvgBuff.sumAvgBTPT = sensorAvgBuff.sumAvgBTPT + sensorRaw->rawBTPT;
+ 320              	 .loc 1 71 0
+ 321 000a 264B     	 ldr r3,.L21
+ 322 000c 9B68     	 ldr r3,[r3,#8]
+ 323 000e 3A68     	 ldr r2,[r7]
+ 324 0010 5288     	 ldrh r2,[r2,#2]
+ 325 0012 9A18     	 add r2,r3,r2
+ 326 0014 234B     	 ldr r3,.L21
+ 327 0016 9A60     	 str r2,[r3,#8]
+  72:../DeviceObject/mathfunction/mathfunc_operation.c **** 	sensorAvgBuff.sumAvgPVPT = sensorAvgBuff.sumAvgPVPT + sensorRaw->rawPVPT;
+ 328              	 .loc 1 72 0
+ 329 0018 224B     	 ldr r3,.L21
+ 330 001a 5B68     	 ldr r3,[r3,#4]
+ 331 001c 3A68     	 ldr r2,[r7]
+ 332 001e 1288     	 ldrh r2,[r2]
+ 333 0020 9A18     	 add r2,r3,r2
+ 334 0022 204B     	 ldr r3,.L21
+ 335 0024 5A60     	 str r2,[r3,#4]
+  73:../DeviceObject/mathfunction/mathfunc_operation.c **** 	sensorAvgBuff.sumAvgHVPT = sensorAvgBuff.sumAvgHVPT + sensorRaw->rawHVPT;
+ 336              	 .loc 1 73 0
+ 337 0026 1F4B     	 ldr r3,.L21
+ 338 0028 DB68     	 ldr r3,[r3,#12]
+ 339 002a 3A68     	 ldr r2,[r7]
+ 340 002c 9288     	 ldrh r2,[r2,#4]
+ 341 002e 9A18     	 add r2,r3,r2
+ 342 0030 1C4B     	 ldr r3,.L21
+ 343 0032 DA60     	 str r2,[r3,#12]
+  74:../DeviceObject/mathfunction/mathfunc_operation.c **** 	sensorAvgBuff.sumAvgDCCT = sensorAvgBuff.sumAvgDCCT + sensorRaw->rawDCCT;
+ 344              	 .loc 1 74 0
+ 345 0034 1B4B     	 ldr r3,.L21
+ 346 0036 1B69     	 ldr r3,[r3,#16]
+ 347 0038 3A68     	 ldr r2,[r7]
+ 348 003a D288     	 ldrh r2,[r2,#6]
+ 349 003c 9A18     	 add r2,r3,r2
+ 350 003e 194B     	 ldr r3,.L21
+ 351 0040 1A61     	 str r2,[r3,#16]
+  75:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  76:../DeviceObject/mathfunction/mathfunc_operation.c **** 	if(count == 31)
+ 352              	 .loc 1 76 0
+ 353 0042 194B     	 ldr r3,.L21+4
+ 354 0044 1B78     	 ldrb r3,[r3]
+ 355 0046 1F2B     	 cmp r3,#31
+ 356 0048 23D1     	 bne .L19
+  77:../DeviceObject/mathfunction/mathfunc_operation.c **** 	{
+  78:../DeviceObject/mathfunction/mathfunc_operation.c **** 		sensorAvg->sumAvgPVPT = sensorAvgBuff.sumAvgPVPT >> 5;
+ 357              	 .loc 1 78 0
+ 358 004a 164B     	 ldr r3,.L21
+ 359 004c 5B68     	 ldr r3,[r3,#4]
+ 360 004e 5A09     	 lsr r2,r3,#5
+ 361 0050 7B68     	 ldr r3,[r7,#4]
+ 362 0052 5A60     	 str r2,[r3,#4]
+  79:../DeviceObject/mathfunction/mathfunc_operation.c **** 		sensorAvg->sumAvgHVPT = sensorAvgBuff.sumAvgHVPT >> 5;
+ 363              	 .loc 1 79 0
+ 364 0054 134B     	 ldr r3,.L21
+ 365 0056 DB68     	 ldr r3,[r3,#12]
+ 366 0058 5A09     	 lsr r2,r3,#5
+ 367 005a 7B68     	 ldr r3,[r7,#4]
+ 368 005c DA60     	 str r2,[r3,#12]
+  80:../DeviceObject/mathfunction/mathfunc_operation.c **** 		sensorAvg->sumAvgBTPT = sensorAvgBuff.sumAvgBTPT >> 5;
+ 369              	 .loc 1 80 0
+ 370 005e 114B     	 ldr r3,.L21
+ 371 0060 9B68     	 ldr r3,[r3,#8]
+ 372 0062 5A09     	 lsr r2,r3,#5
+ 373 0064 7B68     	 ldr r3,[r7,#4]
+ 374 0066 9A60     	 str r2,[r3,#8]
+  81:../DeviceObject/mathfunction/mathfunc_operation.c **** 		sensorAvg->sumAvgDCCT = sensorAvgBuff.sumAvgDCCT >> 5;
+ 375              	 .loc 1 81 0
+ 376 0068 0E4B     	 ldr r3,.L21
+ 377 006a 1B69     	 ldr r3,[r3,#16]
+ 378 006c 5A09     	 lsr r2,r3,#5
+ 379 006e 7B68     	 ldr r3,[r7,#4]
+ 380 0070 1A61     	 str r2,[r3,#16]
+  82:../DeviceObject/mathfunction/mathfunc_operation.c **** 		sensorAvgBuff.sumAvgBTPT = 0;
+ 381              	 .loc 1 82 0
+ 382 0072 0C4B     	 ldr r3,.L21
+ 383 0074 0022     	 mov r2,#0
+ 384 0076 9A60     	 str r2,[r3,#8]
+  83:../DeviceObject/mathfunction/mathfunc_operation.c **** 		sensorAvgBuff.sumAvgPVPT = 0;
+ 385              	 .loc 1 83 0
+ 386 0078 0A4B     	 ldr r3,.L21
+ 387 007a 0022     	 mov r2,#0
+ 388 007c 5A60     	 str r2,[r3,#4]
+  84:../DeviceObject/mathfunction/mathfunc_operation.c **** 		sensorAvgBuff.sumAvgHVPT = 0;
+ 389              	 .loc 1 84 0
+ 390 007e 094B     	 ldr r3,.L21
+ 391 0080 0022     	 mov r2,#0
+ 392 0082 DA60     	 str r2,[r3,#12]
+  85:../DeviceObject/mathfunction/mathfunc_operation.c **** 		sensorAvgBuff.sumAvgDCCT = 0;
+ 393              	 .loc 1 85 0
+ 394 0084 074B     	 ldr r3,.L21
+ 395 0086 0022     	 mov r2,#0
+ 396 0088 1A61     	 str r2,[r3,#16]
+  86:../DeviceObject/mathfunction/mathfunc_operation.c **** 
+  87:../DeviceObject/mathfunction/mathfunc_operation.c **** 		count = 0;
+ 397              	 .loc 1 87 0
+ 398 008a 074B     	 ldr r3,.L21+4
+ 399 008c 0022     	 mov r2,#0
+ 400 008e 1A70     	 strb r2,[r3]
+ 401 0090 05E0     	 b .L18
+ 402              	.L19:
+  88:../DeviceObject/mathfunction/mathfunc_operation.c **** 	}
+  89:../DeviceObject/mathfunction/mathfunc_operation.c **** 	else
+  90:../DeviceObject/mathfunction/mathfunc_operation.c **** 	{
+  91:../DeviceObject/mathfunction/mathfunc_operation.c **** 		count++;
+ 403              	 .loc 1 91 0
+ 404 0092 054B     	 ldr r3,.L21+4
+ 405 0094 1B78     	 ldrb r3,[r3]
+ 406 0096 0133     	 add r3,r3,#1
+ 407 0098 DAB2     	 uxtb r2,r3
+ 408 009a 034B     	 ldr r3,.L21+4
+ 409 009c 1A70     	 strb r2,[r3]
+ 410              	.L18:
+  92:../DeviceObject/mathfunction/mathfunc_operation.c **** 	}
+  93:../DeviceObject/mathfunction/mathfunc_operation.c **** }
+ 411              	 .loc 1 93 0
+ 412 009e BD46     	 mov sp,r7
+ 413 00a0 02B0     	 add sp,sp,#8
+ 414              	 
+ 415 00a2 80BD     	 pop {r7,pc}
+ 416              	.L22:
+ 417              	 .align 2
+ 418              	.L21:
+ 419 00a4 00000000 	 .word sensorAvgBuff.7175
+ 420 00a8 00000000 	 .word count.7176
+ 421              	 .cfi_endproc
+ 422              	.LFE161:
+ 424              	 .section .bss.sensorAvgBuff.7175,"aw",%nobits
+ 425              	 .align 2
+ 428              	sensorAvgBuff.7175:
+ 429 0000 00000000 	 .space 20
+ 429      00000000 
+ 429      00000000 
+ 429      00000000 
+ 429      00000000 
+ 430              	 .section .bss.count.7176,"aw",%nobits
+ 433              	count.7176:
+ 434 0000 00       	 .space 1
+ 435              	 .text
+ 436              	.Letext0:
+ 437              	 .file 2 "d:\\software\\dave_4-4-2_64bit_2018-02-23\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 438              	 .file 3 "d:\\software\\dave_4-4-2_64bit_2018-02-23\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 439              	 .file 4 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_vadc.h"
+ 440              	 .file 5 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_gpio.h"
+ 441              	 .file 6 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc1_gpio.h"
+ 442              	 .file 7 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/pdu/pdu_operation.h"
+ 443              	 .file 8 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/CMSIS/Infineon/XMC1400_series/Include/system_XMC1400.h"
+ 444              	 .file 9 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/pdu/pdu_operation_conf.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 mathfunc_operation.c
+                            *COM*:00000018 g_global_handle
+                            *COM*:00000014 g_group_handle
+                            *COM*:0000000c g_queue_handle
+                            *COM*:00000010 g_queue_entry
+                            *COM*:00000040 g_channel_handle
+                            *COM*:00000010 g_result_handle
+                            *COM*:00000008 adc_io
+                            *COM*:00000008 relay_KMP
+                            *COM*:00000008 relay_KMF
+                            *COM*:00000008 relay_KDSG
+                            *COM*:00000008 relay_KBAT
+    {standard input}:31     .bss.crc_tab16_init:00000000 crc_tab16_init
+    {standard input}:32     .bss.crc_tab16_init:00000000 $d
+    {standard input}:34     .bss.crc_tab16:00000000 $d
+    {standard input}:37     .bss.crc_tab16:00000000 crc_tab16
+    {standard input}:40     .text.MF_CRC_16:00000000 $t
+    {standard input}:45     .text.MF_CRC_16:00000000 MF_CRC_16
+    {standard input}:176    .text.MF_Init_CRC16_Tab:00000000 MF_Init_CRC16_Tab
+    {standard input}:165    .text.MF_CRC_16:000000ac $d
+    {standard input}:171    .text.MF_Init_CRC16_Tab:00000000 $t
+    {standard input}:291    .text.MF_Init_CRC16_Tab:0000009c $d
+    {standard input}:298    .text.MF_MovingAverage:00000000 $t
+    {standard input}:303    .text.MF_MovingAverage:00000000 MF_MovingAverage
+    {standard input}:419    .text.MF_MovingAverage:000000a4 $d
+    {standard input}:428    .bss.sensorAvgBuff.7175:00000000 sensorAvgBuff.7175
+    {standard input}:433    .bss.count.7176:00000000 count.7176
+    {standard input}:425    .bss.sensorAvgBuff.7175:00000000 $d
+    {standard input}:434    .bss.count.7176:00000000 $d
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

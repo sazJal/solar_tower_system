@@ -1,0 +1,2006 @@
+   1              	 .cpu cortex-m0
+   2              	 .fpu softvfp
+   3              	 .eabi_attribute 20,1
+   4              	 .eabi_attribute 21,1
+   5              	 .eabi_attribute 23,3
+   6              	 .eabi_attribute 24,1
+   7              	 .eabi_attribute 25,1
+   8              	 .eabi_attribute 26,1
+   9              	 .eabi_attribute 30,6
+  10              	 .eabi_attribute 34,0
+  11              	 .eabi_attribute 18,4
+  12              	 .code 16
+  13              	 .file "op_config.c"
+  14              	 .text
+  15              	.Ltext0:
+  16              	 .cfi_sections .debug_frame
+  17              	 .section .text.XMC_GPIO_GetInput,"ax",%progbits
+  18              	 .align 2
+  19              	 .code 16
+  20              	 .thumb_func
+  22              	XMC_GPIO_GetInput:
+  23              	.LFB119:
+  24              	 .file 1 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_gpio.h"
+   1:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+   2:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @file xmc_gpio.h
+   3:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @date 2015-06-20
+   4:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+   5:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @cond
+   6:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+   7:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * XMClib v2.1.18 - XMC Peripheral Driver Library 
+   8:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+   9:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Copyright (c) 2015-2018, Infineon Technologies AG
+  10:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * All rights reserved.                        
+  11:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                             
+  12:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * following conditions are met:   
+  14:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                                                              
+  15:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * disclaimer.                        
+  17:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * 
+  18:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * 
+  21:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * products derived from this software without specific prior written permission.                  
+  23:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                                                              
+  24:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                                                              
+  32:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+  35:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  36:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Change History
+  37:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * --------------
+  38:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  39:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * 2015-02-20:
+  40:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *     - Initial draft<br>
+  41:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *     - Documentation improved <br>
+  42:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *      
+  43:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * 2015-06-20:
+  44:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *     - Removed version macros and declaration of GetDriverVersion API
+  45:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  46:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @endcond
+  47:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  48:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+  49:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  50:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #ifndef XMC_GPIO_H
+  51:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #define XMC_GPIO_H
+  52:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  53:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+  54:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * HEADER FILES
+  55:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+  56:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  57:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #include "xmc_common.h"
+  58:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  59:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+  60:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @addtogroup XMClib XMC Peripheral Library
+  61:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @{
+  62:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+  63:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  64:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+  65:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @addtogroup GPIO
+  66:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @brief General Purpose Input Output (GPIO) driver for the XMC microcontroller family.
+  67:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  68:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * GPIO driver provide a generic and very flexible software interface for all standard digital I/O 
+  69:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Each port slice has individual interfaces for the operation as General Purpose I/O and it furthe
+  70:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * connectivity to the on-chip periphery and the control for the pad characteristics. 
+  71:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  72:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * The driver is divided into Input and Output mode.
+  73:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  74:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Input mode features:
+  75:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Configuration structure XMC_GPIO_CONFIG_t and initialization function XMC_GPIO_Init()
+  76:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of weak pull-up or pull-down device. Configuration structure XMC_GPIO_MO
+  77:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC1
+  78:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of input hysteresis. XMC_GPIO_SetInputHysteresis()
+  79:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+  80:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  81:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * 
+  82:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Output mode features:
+  83:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of push pull/open drain and Alternate output. Configuration structure XM
+  84:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC4
+  85:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of pad driver strength. Configuration structure XMC_GPIO_OUTPUT_STRENGTH
+  86:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+  87:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  88:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of initial output level. Configuration structure XMC_GPIO_OUTPUT_LEVEL_t
+  89:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  90:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *@{
+  91:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+  92:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  
+  93:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+  94:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * MACROS
+  95:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+  96:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  97:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #define PORT_IOCR_PC_Pos PORT0_IOCR0_PC0_Pos
+  98:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #define PORT_IOCR_PC_Msk PORT0_IOCR0_PC0_Msk
+  99:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 100:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #define PORT_IOCR_PC_Size 				(8U)
+ 101:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 											
+ 102:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 103:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #define XMC_GPIO_CHECK_OUTPUT_LEVEL(level) ((level == XMC_GPIO_OUTPUT_LEVEL_LOW) || \
+ 104:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****                                             (level == XMC_GPIO_OUTPUT_LEVEL_HIGH))
+ 105:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****                                             
+ 106:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #define XMC_GPIO_CHECK_HWCTRL(hwctrl) ((hwctrl == XMC_GPIO_HWCTRL_DISABLED) || \
+ 107:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****                                        (hwctrl == XMC_GPIO_HWCTRL_PERIPHERAL1) || \
+ 108:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****                                        (hwctrl == XMC_GPIO_HWCTRL_PERIPHERAL2))                    
+ 109:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****                                             
+ 110:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+ 111:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * ENUMS
+ 112:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 113:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 114:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 115:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 116:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Defines output level of a pin. Use type \a XMC_GPIO_OUTPUT_LEVEL_t for this enum.
+ 117:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 118:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** typedef enum XMC_GPIO_OUTPUT_LEVEL
+ 119:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 120:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_OUTPUT_LEVEL_LOW  = 0x10000U, /**<  Reset bit */
+ 121:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_OUTPUT_LEVEL_HIGH = 0x1U, 	/**< Set bit  */
+ 122:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** } XMC_GPIO_OUTPUT_LEVEL_t;
+ 123:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 124:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 125:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Defines direct hardware control characteristics of the pin . Use type \a XMC_GPIO_HWCTRL_t for t
+ 126:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 127:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** typedef enum XMC_GPIO_HWCTRL
+ 128:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 129:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_HWCTRL_DISABLED     = 0x0U, /**<  Software control only */
+ 130:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_HWCTRL_PERIPHERAL1  = 0x1U, /**<  HWI0/HWO0 control path can override the software confi
+ 131:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_HWCTRL_PERIPHERAL2  = 0x2U  /**<  HWI1/HWO1 control path can override the software confi
+ 132:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** } XMC_GPIO_HWCTRL_t;
+ 133:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 134:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+ 135:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * DEVICE FAMILY EXTENSIONS
+ 136:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 137:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 138:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  #if UC_FAMILY == XMC1
+ 139:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #include "xmc1_gpio.h"
+ 140:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #elif UC_FAMILY == XMC4
+ 141:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #include "xmc4_gpio.h"
+ 142:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #else
+ 143:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #error "xmc_gpio.h: family device not supported"
+ 144:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #endif
+ 145:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 146:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+ 147:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * API PROTOTYPES
+ 148:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 149:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 150:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #ifdef __cplusplus
+ 151:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** extern "C" {
+ 152:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** #endif
+ 153:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 154:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 155:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 156:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	  Constant pointer pointing to GPIO port, to access port registers like Pn_OUT,Pn_O
+ 157:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	  Port pin number.
+ 158:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  config GPIO configuration data structure. Refer data structure @ref XMC_GPIO_CONFIG_t fo
+ 159:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 160:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 161:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 162:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 163:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC1
+ 164:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Initializes input / output mode settings like, pull up / pull down devices,hysteresis, push pull
+ 165:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Also configures alternate function outputs and clears hardware port control for a selected \a po
+ 166:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \a config provides selected I/O settings. It configures hardware registers Pn_IOCR,Pn_OUT, Pn_OM
+ 167:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+ 168:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC4
+ 169:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Initializes input / output mode settings like, pull up / pull down devices,push pull /open drain
+ 170:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Also configures alternate function outputs and clears hardware port control for selected \a port
+ 171:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * It configures hardware registers Pn_IOCR,Pn_OUT,Pn_OMR,Pn_PDISC and Pn_PDR.\n
+ 172:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+ 173:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 174:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 175:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *  None
+ 176:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 177:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 178:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * This API is called in definition of DAVE_init by code generation and therefore should not be exp
+ 179:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * for the normal operation. Use other APIs only after DAVE_init is called successfully (returns DA
+ 180:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 181:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 182:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 183:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 184:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  
+ 185:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** void XMC_GPIO_Init(XMC_GPIO_PORT_t *const port, const uint8_t pin, const XMC_GPIO_CONFIG_t *const c
+ 186:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  
+ 187:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 188:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 189:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	Constant pointer pointing to GPIO port, to access hardware register Pn_IOCR.
+ 190:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	Port pin number.
+ 191:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  mode input / output functionality selection. Refer @ref XMC_GPIO_MODE_t for valid values
+ 192:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 193:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 194:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 195:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 196:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Sets digital input and output driver functionality and characteristics of a GPIO port pin. It co
+ 197:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * registers Pn_IOCR. \a mode is initially configured during initialization in XMC_GPIO_Init(). Cal
+ 198:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * the port direction functionality as needed later in the program.
+ 199:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 200:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 201:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *  None
+ 202:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 203:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 204:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 205:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** void XMC_GPIO_SetMode(XMC_GPIO_PORT_t *const port, const uint8_t pin, const XMC_GPIO_MODE_t mode);
+ 206:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 207:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 208:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 209:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 210:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	 Constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 211:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	 Port pin number.
+ 212:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  level output level selection. Refer @ref XMC_GPIO_OUTPUT_LEVEL_t for valid values.
+ 213:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 214:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 215:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 216:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 217:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Set port pin output level to high or low.It configures hardware registers Pn_OMR.\a level is ini
+ 218:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * configured during initialization in XMC_GPIO_Init(). Call this API to alter output level as need
+ 219:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 220:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 221:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *  XMC_GPIO_SetOutputHigh(), XMC_GPIO_SetOutputLow().
+ 222:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 223:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 224:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode().
+ 225:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 226:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 227:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 228:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 229:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_SetOutputLevel(XMC_GPIO_PORT_t *const port, const uint8_t pin, const 
+ 230:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 231:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputLevel: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 232:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputLevel: Invalid output level", XMC_GPIO_CHECK_OUTPUT_LEVEL(level));
+ 233:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   
+ 234:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = (uint32_t)level << pin;
+ 235:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 236:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 237:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 238:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 239:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 240:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	Port pin number.
+ 241:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 242:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 243:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 244:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 245:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *  Sets port pin output to high. It configures hardware registers Pn_OMR.
+ 246:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 247:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *  \par<b>Related APIs:</b><BR>
+ 248:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *  XMC_GPIO_SetOutputLow()
+ 249:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 250:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 251:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode().\n
+ 252:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Register Pn_OMR is virtual and does not contain any flip-flop. A read action delivers the value 
+ 253:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 254:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 255:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 256:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_SetOutputHigh(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 257:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 258:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputHigh: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 259:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 260:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = (uint32_t)0x1U << pin;
+ 261:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 262:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 263:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 264:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 265:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 266:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	port pin number.
+ 267:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 268:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return  None
+ 269:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 270:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Description:</b><br>
+ 271:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Sets port pin output to low. It configures hardware registers Pn_OMR.\n
+ 272:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 273:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>>
+ 274:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * XMC_GPIO_SetOutputHigh()
+ 275:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 276:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Note:</b><br>
+ 277:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode().
+ 278:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Register Pn_OMR is virtual and does not contain any flip-flop. A read action delivers the value 
+ 279:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 280:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 281:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 282:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_SetOutputLow(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 283:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 284:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputLow: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 285:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 286:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = 0x10000U << pin;
+ 287:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 288:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 289:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 290:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 291:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param port constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 292:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param pin  port pin number.
+ 293:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 294:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 295:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 296:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 297:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Configures port pin output to Toggle. It configures hardware registers Pn_OMR.
+ 298:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 299:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 300:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * XMC_GPIO_SetOutputHigh(), XMC_GPIO_SetOutputLow().
+ 301:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 302:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 303:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode(). Regis
+ 304:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * and does not contain any flip-flop. A read action delivers the value of 0.
+ 305:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 306:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 307:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 308:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_ToggleOutput(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 309:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 310:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_ToggleOutput: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 311:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 312:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = 0x10001U << pin;
+ 313:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 314:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 315:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 316:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 317:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param port constant pointer pointing to GPIO port, to access hardware register Pn_IN.
+ 318:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param pin  Port pin number.
+ 319:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 320:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return uint32_t pin logic level status.
+ 321:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 322:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Description:</b><br>
+ 323:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Reads the Pn_IN register and returns the current logical value at the GPIO pin.
+ 324:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 325:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 326:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * None
+ 327:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 328:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 329:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to input mode using XMC_GPIO_SetMode().
+ 330:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 331:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 332:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 333:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE uint32_t XMC_GPIO_GetInput(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 334:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** {
+  25              	 .loc 1 334 0
+  26              	 .cfi_startproc
+  27 0000 80B5     	 push {r7,lr}
+  28              	.LCFI0:
+  29              	 .cfi_def_cfa_offset 8
+  30              	 .cfi_offset 7,-8
+  31              	 .cfi_offset 14,-4
+  32 0002 82B0     	 sub sp,sp,#8
+  33              	.LCFI1:
+  34              	 .cfi_def_cfa_offset 16
+  35 0004 00AF     	 add r7,sp,#0
+  36              	.LCFI2:
+  37              	 .cfi_def_cfa_register 7
+  38 0006 7860     	 str r0,[r7,#4]
+  39 0008 0A1C     	 mov r2,r1
+  40 000a FB1C     	 add r3,r7,#3
+  41 000c 1A70     	 strb r2,[r3]
+ 335:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_GetInput: Invalid port", XMC_GPIO_CHECK_PORT(port));
+ 336:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 337:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h ****   return (((port->IN) >> pin) & 0x1U);
+  42              	 .loc 1 337 0
+  43 000e 7B68     	 ldr r3,[r7,#4]
+  44 0010 5A6A     	 ldr r2,[r3,#36]
+  45 0012 FB1C     	 add r3,r7,#3
+  46 0014 1B78     	 ldrb r3,[r3]
+  47 0016 DA40     	 lsr r2,r2,r3
+  48 0018 131C     	 mov r3,r2
+  49 001a 0122     	 mov r2,#1
+  50 001c 1340     	 and r3,r2
+ 338:C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc\xmc_gpio.h **** }
+  51              	 .loc 1 338 0
+  52 001e 181C     	 mov r0,r3
+  53 0020 BD46     	 mov sp,r7
+  54 0022 02B0     	 add sp,sp,#8
+  55              	 
+  56 0024 80BD     	 pop {r7,pc}
+  57              	 .cfi_endproc
+  58              	.LFE119:
+  60              	 .comm pcs_button_config,8,4
+  61              	 .comm CAN0_txd_config,8,4
+  62              	 .comm CAN0_rxd_config,8,4
+  63              	 .comm can_baud,12,4
+  64              	 .comm msgObjToPCS,32,8
+  65              	 .comm msgObjFromPCS,32,8
+  66              	 .comm SLICE0_config,8,4
+  67              	 .comm SLICE1_config,8,4
+  68              	 .comm sysTickHandle,6,4
+  69              	 .comm esp32_tx_config,8,4
+  70              	 .comm esp32_rx_config,8,4
+  71              	 .comm esp32_config,12,4
+  72              	 .comm g_global_handle,24,4
+  73              	 .comm g_group_handle,20,4
+  74              	 .comm g_queue_handle,12,4
+  75              	 .comm g_queue_entry,16,4
+  76              	 .comm g_channel_handle,64,4
+  77              	 .comm g_result_handle,16,4
+  78              	 .comm adc_io,8,4
+  79              	 .comm relay_KMP,8,4
+  80              	 .comm relay_KMF,8,4
+  81              	 .comm relay_KDSG,8,4
+  82              	 .comm relay_KBAT,8,4
+  83              	 .comm button_config,8,4
+  84              	 .comm led_config,8,4
+  85              	 .comm dipswitch_config,8,4
+  86              	 .comm gpio_config,8,4
+  87              	 .comm iic_config,8,4
+  88              	 .comm eru1_etl2_config,8,4
+  89              	 .comm eru1_ogu3_config,4,4
+  90              	 .comm eru0_etl2_config,8,4
+  91              	 .comm eru0_ogu2_config,4,4
+  92              	 .comm rtc_sda_config,8,4
+  93              	 .comm rtc_scl_config,8,4
+  94              	 .comm eru_io_config,8,4
+  95              	 .comm eru_mfp_config,8,4
+  96              	 .comm geenix_sel_config,8,4
+  97              	 .comm geenix_tx_config,8,4
+  98              	 .comm geenix_rx_config,8,4
+  99              	 .comm geenix_config,12,4
+ 100              	 .comm rs232_tx_config,8,4
+ 101              	 .comm rs232_rx_config,8,4
+ 102              	 .comm rs232_config,12,4
+ 103              	 .comm buffer,300,4
+ 104              	 .comm ErrorBeingHandled,1,1
+ 105              	 .comm flag_standby,1,1
+ 106              	 .comm IsPerformingPrecharge,1,1
+ 107              	 .comm recEspCommIsHalt,1,1
+ 108              	 .comm esp32IsHandShake,1,1
+ 109              	 .comm recbmsIsHandShake,1,1
+ 110              	 .comm sysTickFlag,1,1
+ 111              	 .comm system_start,1,1
+ 112              	 .comm pvHShake,8,4
+ 113              	 .comm esp32HShake,8,4
+ 114              	 .comm buttonHShake,8,4
+ 115              	 .comm controlFlag,6,4
+ 116              	 .comm flag_pcs,1,1
+ 117              	 .comm flag_pcsBlockIsStandby,1,1
+ 118              	 .comm pcsBmsStatus,4,4
+ 119              	 .comm bmsSensor,8,4
+ 120              	 .comm pcsVoltages,8,4
+ 121              	 .comm pcsCurrents,8,4
+ 122              	 .comm pcsPowers,8,4
+ 123              	 .comm pcsMiscs,4,4
+ 124              	 .comm pcsSystemStatus,5,4
+ 125              	 .comm pcsDCgridStatus,4,4
+ 126              	 .comm pcsACinvStatus,4,4
+ 127              	 .comm pcsPVconvStatus,4,4
+ 128              	 .comm pcsBatconvStatus,4,4
+ 129              	 .comm flag_pdu,1,1
+ 130              	 .comm flag_pdu_adc,1,1
+ 131              	 .comm pduSensorRaw,8,4
+ 132              	 .comm pduSensorAvg,20,4
+ 133              	 .comm pduSensor,16,4
+ 134              	 .comm flag_button,1,1
+ 135              	 .comm flag_error,1,1
+ 136              	 .comm flag_misc,1,1
+ 137              	 .comm flag_rs232,1,1
+ 138              	 .comm rtcDate,4,4
+ 139              	 .comm rtcTime,3,4
+ 140              	 .comm flag_rtc,1,1
+ 141              	 .comm flag_esp32,1,1
+ 142              	 .comm enable_bt,1,1
+ 143              	 .comm btData,44,4
+ 144              	 .comm esp32DataPack,92,4
+ 145              	 .comm batPackData,8,4
+ 146              	 .comm temporaryStatus,1,1
+ 147              	 .comm soc_f,4,4
+ 148              	 .comm ocv,4,4
+ 149              	 .comm genix_send,1,1
+ 150              	 .comm isPeriphMode,1,1
+ 151              	 .comm isStartHShake,1,1
+ 152              	 .comm isHShakeValid,1,1
+ 153              	 .comm NTPdata,200,4
+ 154              	 .comm mcuState,1,1
+ 155              	 .global __aeabi_fcmpgt
+ 156 0026 C046     	 .section .text.OP_SetupConnection,"ax",%progbits
+ 157              	 .align 2
+ 158              	 .global OP_SetupConnection
+ 159              	 .code 16
+ 160              	 .thumb_func
+ 162              	OP_SetupConnection:
+ 163              	.LFB362:
+ 164              	 .file 2 "../DeviceOperation/operation/op_config.c"
+   1:../DeviceOperation/operation/op_config.c **** /*
+   2:../DeviceOperation/operation/op_config.c ****  * op_config.c
+   3:../DeviceOperation/operation/op_config.c ****  *
+   4:../DeviceOperation/operation/op_config.c ****  *  Created on: Jul 3, 2020
+   5:../DeviceOperation/operation/op_config.c ****  *      Author: lenovo
+   6:../DeviceOperation/operation/op_config.c ****  */
+   7:../DeviceOperation/operation/op_config.c **** 
+   8:../DeviceOperation/operation/op_config.c **** #include "op_config.h"
+   9:../DeviceOperation/operation/op_config.c **** #include "stdio.h"
+  10:../DeviceOperation/operation/op_config.c **** 
+  11:../DeviceOperation/operation/op_config.c **** void OP_SetupConnection(OP_STATE_t *state, MISC_HANDSHAKE_PARAM_t *espHandShake,
+  12:../DeviceOperation/operation/op_config.c **** 						MISC_HANDSHAKE_PARAM_t *pvHandShake,
+  13:../DeviceOperation/operation/op_config.c **** 						MISC_CTRL_FLAG_t *ctrlFlag, float pvVoltage,
+  14:../DeviceOperation/operation/op_config.c **** 						PCS_BMS_STATUS_t *pcsBmsStatus, PCS_STATUS_t *pcsStatus,
+  15:../DeviceOperation/operation/op_config.c **** 						RTC_TIME_PARAM_t *rtcTime, RTC_DATE_PARAM_t *rtcDate)
+  16:../DeviceOperation/operation/op_config.c **** {
+ 165              	 .loc 2 16 0
+ 166              	 .cfi_startproc
+ 167 0000 80B5     	 push {r7,lr}
+ 168              	.LCFI3:
+ 169              	 .cfi_def_cfa_offset 8
+ 170              	 .cfi_offset 7,-8
+ 171              	 .cfi_offset 14,-4
+ 172 0002 84B0     	 sub sp,sp,#16
+ 173              	.LCFI4:
+ 174              	 .cfi_def_cfa_offset 24
+ 175 0004 00AF     	 add r7,sp,#0
+ 176              	.LCFI5:
+ 177              	 .cfi_def_cfa_register 7
+ 178 0006 F860     	 str r0,[r7,#12]
+ 179 0008 B960     	 str r1,[r7,#8]
+ 180 000a 7A60     	 str r2,[r7,#4]
+ 181 000c 3B60     	 str r3,[r7]
+  17:../DeviceOperation/operation/op_config.c **** 	/* 1. Handshaking for ESP32 */
+  18:../DeviceOperation/operation/op_config.c **** 	if(espHandShake->isExecuted)
+ 182              	 .loc 2 18 0
+ 183 000e BB68     	 ldr r3,[r7,#8]
+ 184 0010 1B79     	 ldrb r3,[r3,#4]
+ 185 0012 002B     	 cmp r3,#0
+ 186 0014 2DD0     	 beq .L4
+  19:../DeviceOperation/operation/op_config.c **** 	{
+  20:../DeviceOperation/operation/op_config.c **** 		/* Activate Time Out Parameter */
+  21:../DeviceOperation/operation/op_config.c **** 		espHandShake->isTimeOut = false;
+ 187              	 .loc 2 21 0
+ 188 0016 BB68     	 ldr r3,[r7,#8]
+ 189 0018 0022     	 mov r2,#0
+ 190 001a DA70     	 strb r2,[r3,#3]
+  22:../DeviceOperation/operation/op_config.c **** 		espHandShake->cycle		= 7000;
+ 191              	 .loc 2 22 0
+ 192 001c BB68     	 ldr r3,[r7,#8]
+ 193 001e 544A     	 ldr r2,.L12
+ 194 0020 1A80     	 strh r2,[r3]
+  23:../DeviceOperation/operation/op_config.c **** 		espHandShake->isEnabled = true;
+ 195              	 .loc 2 23 0
+ 196 0022 BB68     	 ldr r3,[r7,#8]
+ 197 0024 0122     	 mov r2,#1
+ 198 0026 9A70     	 strb r2,[r3,#2]
+  24:../DeviceOperation/operation/op_config.c **** 
+  25:../DeviceOperation/operation/op_config.c **** 		/* Activate Handshaking Process */
+  26:../DeviceOperation/operation/op_config.c **** 		espHandShake->isStarted	= true;
+ 199              	 .loc 2 26 0
+ 200 0028 BB68     	 ldr r3,[r7,#8]
+ 201 002a 0122     	 mov r2,#1
+ 202 002c 5A71     	 strb r2,[r3,#5]
+  27:../DeviceOperation/operation/op_config.c **** 		espHandShake->isValid	= true;
+ 203              	 .loc 2 27 0
+ 204 002e BB68     	 ldr r3,[r7,#8]
+ 205 0030 0122     	 mov r2,#1
+ 206 0032 9A71     	 strb r2,[r3,#6]
+  28:../DeviceOperation/operation/op_config.c **** 
+  29:../DeviceOperation/operation/op_config.c **** 		/* 2. Ensure all relay at initial state */
+  30:../DeviceOperation/operation/op_config.c **** 		/* Initiate relay status */
+  31:../DeviceOperation/operation/op_config.c **** 		PDU_Switch_Relay(PDU_RELAY_KBAT, PDU_RELAY_OPEN);
+ 207              	 .loc 2 31 0
+ 208 0034 0020     	 mov r0,#0
+ 209 0036 0021     	 mov r1,#0
+ 210 0038 FFF7FEFF 	 bl PDU_Switch_Relay
+  32:../DeviceOperation/operation/op_config.c **** 		PDU_Switch_Relay(PDU_RELAY_KDSG, PDU_RELAY_OPEN);
+ 211              	 .loc 2 32 0
+ 212 003c 0320     	 mov r0,#3
+ 213 003e 0021     	 mov r1,#0
+ 214 0040 FFF7FEFF 	 bl PDU_Switch_Relay
+  33:../DeviceOperation/operation/op_config.c **** 		PDU_Switch_Relay(PDU_RELAY_KMP,  PDU_RELAY_OPEN);
+ 215              	 .loc 2 33 0
+ 216 0044 0120     	 mov r0,#1
+ 217 0046 0021     	 mov r1,#0
+ 218 0048 FFF7FEFF 	 bl PDU_Switch_Relay
+  34:../DeviceOperation/operation/op_config.c **** 		PDU_Switch_Relay(PDU_RELAY_KMF,  PDU_RELAY_OPEN);
+ 219              	 .loc 2 34 0
+ 220 004c 0220     	 mov r0,#2
+ 221 004e 0021     	 mov r1,#0
+ 222 0050 FFF7FEFF 	 bl PDU_Switch_Relay
+  35:../DeviceOperation/operation/op_config.c **** 
+  36:../DeviceOperation/operation/op_config.c **** 		/* CAN Status Setup */
+  37:../DeviceOperation/operation/op_config.c **** 		pcsBmsStatus->bms_main_relay		= RELAY_OPEN;
+ 223              	 .loc 2 37 0
+ 224 0054 FB69     	 ldr r3,[r7,#28]
+ 225 0056 0022     	 mov r2,#0
+ 226 0058 9A70     	 strb r2,[r3,#2]
+  38:../DeviceOperation/operation/op_config.c **** 		pcsBmsStatus->bms_precharge_relay	= RELAY_OPEN;
+ 227              	 .loc 2 38 0
+ 228 005a FB69     	 ldr r3,[r7,#28]
+ 229 005c 0022     	 mov r2,#0
+ 230 005e DA70     	 strb r2,[r3,#3]
+  39:../DeviceOperation/operation/op_config.c **** 		pcsBmsStatus->bms_status			= BMU_PRECHARGE;
+ 231              	 .loc 2 39 0
+ 232 0060 FB69     	 ldr r3,[r7,#28]
+ 233 0062 0122     	 mov r2,#1
+ 234 0064 1A70     	 strb r2,[r3]
+  40:../DeviceOperation/operation/op_config.c **** 		pcsBmsStatus->bms_pcs_command		= BMU_PCS_STOP;
+ 235              	 .loc 2 40 0
+ 236 0066 FB69     	 ldr r3,[r7,#28]
+ 237 0068 0022     	 mov r2,#0
+ 238 006a 5A70     	 strb r2,[r3,#1]
+  41:../DeviceOperation/operation/op_config.c **** 
+  42:../DeviceOperation/operation/op_config.c **** 		/* Notify conditional state */
+  43:../DeviceOperation/operation/op_config.c **** 		espHandShake->isExecuted	= true;
+ 239              	 .loc 2 43 0
+ 240 006c BB68     	 ldr r3,[r7,#8]
+ 241 006e 0122     	 mov r2,#1
+ 242 0070 1A71     	 strb r2,[r3,#4]
+ 243              	.L4:
+  44:../DeviceOperation/operation/op_config.c **** 	}
+  45:../DeviceOperation/operation/op_config.c **** 
+  46:../DeviceOperation/operation/op_config.c **** 	/* 2. Checking PV Condition */
+  47:../DeviceOperation/operation/op_config.c **** 	if(!pvHandShake->isExecuted)
+ 244              	 .loc 2 47 0
+ 245 0072 7B68     	 ldr r3,[r7,#4]
+ 246 0074 1B79     	 ldrb r3,[r3,#4]
+ 247 0076 0122     	 mov r2,#1
+ 248 0078 5340     	 eor r3,r2
+ 249 007a DBB2     	 uxtb r3,r3
+ 250 007c 002B     	 cmp r3,#0
+ 251 007e 15D0     	 beq .L5
+  48:../DeviceOperation/operation/op_config.c **** 	{
+  49:../DeviceOperation/operation/op_config.c **** 		if(pvVoltage > 150.0 || ctrlFlag->isBypass_power_mode)
+ 252              	 .loc 2 49 0
+ 253 0080 B869     	 ldr r0,[r7,#24]
+ 254 0082 3C49     	 ldr r1,.L12+4
+ 255 0084 FFF7FEFF 	 bl __aeabi_fcmpgt
+ 256 0088 031E     	 sub r3,r0,#0
+ 257 008a 03D1     	 bne .L6
+ 258              	 .loc 2 49 0 is_stmt 0 discriminator 1
+ 259 008c 3B68     	 ldr r3,[r7]
+ 260 008e DB78     	 ldrb r3,[r3,#3]
+ 261 0090 002B     	 cmp r3,#0
+ 262 0092 0BD0     	 beq .L5
+ 263              	.L6:
+  50:../DeviceOperation/operation/op_config.c **** 		{
+  51:../DeviceOperation/operation/op_config.c **** 			pvHandShake->isTimeOut	= false;
+ 264              	 .loc 2 51 0 is_stmt 1
+ 265 0094 7B68     	 ldr r3,[r7,#4]
+ 266 0096 0022     	 mov r2,#0
+ 267 0098 DA70     	 strb r2,[r3,#3]
+  52:../DeviceOperation/operation/op_config.c **** 			pvHandShake->isEnabled	= true;
+ 268              	 .loc 2 52 0
+ 269 009a 7B68     	 ldr r3,[r7,#4]
+ 270 009c 0122     	 mov r2,#1
+ 271 009e 9A70     	 strb r2,[r3,#2]
+  53:../DeviceOperation/operation/op_config.c **** 			pvHandShake->cycle		= 10000;
+ 272              	 .loc 2 53 0
+ 273 00a0 7B68     	 ldr r3,[r7,#4]
+ 274 00a2 354A     	 ldr r2,.L12+8
+ 275 00a4 1A80     	 strh r2,[r3]
+  54:../DeviceOperation/operation/op_config.c **** 			pvHandShake->isExecuted	= true;
+ 276              	 .loc 2 54 0
+ 277 00a6 7B68     	 ldr r3,[r7,#4]
+ 278 00a8 0122     	 mov r2,#1
+ 279 00aa 1A71     	 strb r2,[r3,#4]
+ 280              	.L5:
+  55:../DeviceOperation/operation/op_config.c **** 		}
+  56:../DeviceOperation/operation/op_config.c **** 	}
+  57:../DeviceOperation/operation/op_config.c **** 
+  58:../DeviceOperation/operation/op_config.c **** 	/* Evaluate 1) and 2) status */
+  59:../DeviceOperation/operation/op_config.c **** 	if((pvVoltage > 150.0 || ctrlFlag->isBypass_power_mode)
+ 281              	 .loc 2 59 0
+ 282 00ac B869     	 ldr r0,[r7,#24]
+ 283 00ae 3149     	 ldr r1,.L12+4
+ 284 00b0 FFF7FEFF 	 bl __aeabi_fcmpgt
+ 285 00b4 031E     	 sub r3,r0,#0
+ 286 00b6 03D1     	 bne .L7
+ 287              	 .loc 2 59 0 is_stmt 0 discriminator 1
+ 288 00b8 3B68     	 ldr r3,[r7]
+ 289 00ba DB78     	 ldrb r3,[r3,#3]
+ 290 00bc 002B     	 cmp r3,#0
+ 291 00be 50D0     	 beq .L8
+ 292              	.L7:
+  60:../DeviceOperation/operation/op_config.c **** 		&& (pcsStatus->pcs_system_status == PCS_STAT_STANDBY))
+ 293              	 .loc 2 60 0 is_stmt 1
+ 294 00c0 3B6A     	 ldr r3,[r7,#32]
+ 295 00c2 1B78     	 ldrb r3,[r3]
+ 296 00c4 042B     	 cmp r3,#4
+ 297 00c6 4CD1     	 bne .L8
+  61:../DeviceOperation/operation/op_config.c **** 	{
+  62:../DeviceOperation/operation/op_config.c **** 		if(pvHandShake->isTimeOut)
+ 298              	 .loc 2 62 0
+ 299 00c8 7B68     	 ldr r3,[r7,#4]
+ 300 00ca DB78     	 ldrb r3,[r3,#3]
+ 301 00cc 002B     	 cmp r3,#0
+ 302 00ce 47D0     	 beq .L9
+  63:../DeviceOperation/operation/op_config.c **** 		{
+  64:../DeviceOperation/operation/op_config.c **** 			if(espHandShake->isValid)
+ 303              	 .loc 2 64 0
+ 304 00d0 BB68     	 ldr r3,[r7,#8]
+ 305 00d2 9B79     	 ldrb r3,[r3,#6]
+ 306 00d4 002B     	 cmp r3,#0
+ 307 00d6 28D0     	 beq .L10
+  65:../DeviceOperation/operation/op_config.c **** 			{
+  66:../DeviceOperation/operation/op_config.c **** 				rtcDate->year = rtcDate->year - 2000;
+ 308              	 .loc 2 66 0
+ 309 00d8 BB6A     	 ldr r3,[r7,#40]
+ 310 00da 1B88     	 ldrh r3,[r3]
+ 311 00dc 274A     	 ldr r2,.L12+12
+ 312 00de 9446     	 mov ip,r2
+ 313 00e0 6344     	 add r3,r3,ip
+ 314 00e2 9AB2     	 uxth r2,r3
+ 315 00e4 BB6A     	 ldr r3,[r7,#40]
+ 316 00e6 1A80     	 strh r2,[r3]
+  67:../DeviceOperation/operation/op_config.c **** 				INFO_RTCDateInit(*rtcDate);
+ 317              	 .loc 2 67 0
+ 318 00e8 BB6A     	 ldr r3,[r7,#40]
+ 319 00ea 1A88     	 ldrh r2,[r3]
+ 320 00ec 5B88     	 ldrh r3,[r3,#2]
+ 321 00ee 1B04     	 lsl r3,r3,#16
+ 322 00f0 1343     	 orr r3,r2
+ 323 00f2 0022     	 mov r2,#0
+ 324 00f4 1A1C     	 mov r2,r3
+ 325 00f6 101C     	 mov r0,r2
+ 326 00f8 FFF7FEFF 	 bl INFO_RTCDateInit
+  68:../DeviceOperation/operation/op_config.c **** 				INFO_RTCTimeInit(*rtcTime);
+ 327              	 .loc 2 68 0
+ 328 00fc 7B6A     	 ldr r3,[r7,#36]
+ 329 00fe 1A78     	 ldrb r2,[r3]
+ 330 0100 5978     	 ldrb r1,[r3,#1]
+ 331 0102 0902     	 lsl r1,r1,#8
+ 332 0104 0A43     	 orr r2,r1
+ 333 0106 9B78     	 ldrb r3,[r3,#2]
+ 334 0108 1B04     	 lsl r3,r3,#16
+ 335 010a 1A43     	 orr r2,r3
+ 336 010c 0023     	 mov r3,#0
+ 337 010e 1202     	 lsl r2,r2,#8
+ 338 0110 120A     	 lsr r2,r2,#8
+ 339 0112 1B0E     	 lsr r3,r3,#24
+ 340 0114 1B06     	 lsl r3,r3,#24
+ 341 0116 1343     	 orr r3,r2
+ 342 0118 181C     	 mov r0,r3
+ 343 011a FFF7FEFF 	 bl INFO_RTCTimeInit
+  69:../DeviceOperation/operation/op_config.c **** 				espHandShake->isValid 	= false;
+ 344              	 .loc 2 69 0
+ 345 011e BB68     	 ldr r3,[r7,#8]
+ 346 0120 0022     	 mov r2,#0
+ 347 0122 9A71     	 strb r2,[r3,#6]
+  70:../DeviceOperation/operation/op_config.c **** 				espHandShake->isStarted = false;
+ 348              	 .loc 2 70 0
+ 349 0124 BB68     	 ldr r3,[r7,#8]
+ 350 0126 0022     	 mov r2,#0
+ 351 0128 5A71     	 strb r2,[r3,#5]
+ 352              	.L10:
+  71:../DeviceOperation/operation/op_config.c **** 			}
+  72:../DeviceOperation/operation/op_config.c **** 
+  73:../DeviceOperation/operation/op_config.c **** 			PDU_Switch_Relay(PDU_RELAY_KMF,  PDU_RELAY_CLOSE);
+ 353              	 .loc 2 73 0
+ 354 012a 0220     	 mov r0,#2
+ 355 012c 0121     	 mov r1,#1
+ 356 012e FFF7FEFF 	 bl PDU_Switch_Relay
+  74:../DeviceOperation/operation/op_config.c **** 			PDU_Switch_Relay(PDU_RELAY_KDSG, PDU_RELAY_CLOSE);
+ 357              	 .loc 2 74 0
+ 358 0132 0320     	 mov r0,#3
+ 359 0134 0121     	 mov r1,#1
+ 360 0136 FFF7FEFF 	 bl PDU_Switch_Relay
+  75:../DeviceOperation/operation/op_config.c **** 			pcsBmsStatus->bms_precharge_relay = RELAY_CLOSE;
+ 361              	 .loc 2 75 0
+ 362 013a FB69     	 ldr r3,[r7,#28]
+ 363 013c 0122     	 mov r2,#1
+ 364 013e DA70     	 strb r2,[r3,#3]
+  76:../DeviceOperation/operation/op_config.c **** 			*state	= OP_TURN_ON;
+ 365              	 .loc 2 76 0
+ 366 0140 FB68     	 ldr r3,[r7,#12]
+ 367 0142 0122     	 mov r2,#1
+ 368 0144 1A70     	 strb r2,[r3]
+  77:../DeviceOperation/operation/op_config.c **** 
+  78:../DeviceOperation/operation/op_config.c **** 			/* restart handshaking variable */
+  79:../DeviceOperation/operation/op_config.c **** 			espHandShake->isEnabled		= false;
+ 369              	 .loc 2 79 0
+ 370 0146 BB68     	 ldr r3,[r7,#8]
+ 371 0148 0022     	 mov r2,#0
+ 372 014a 9A70     	 strb r2,[r3,#2]
+  80:../DeviceOperation/operation/op_config.c **** 			espHandShake->isExecuted	= false;
+ 373              	 .loc 2 80 0
+ 374 014c BB68     	 ldr r3,[r7,#8]
+ 375 014e 0022     	 mov r2,#0
+ 376 0150 1A71     	 strb r2,[r3,#4]
+  81:../DeviceOperation/operation/op_config.c **** 			pvHandShake->isEnabled		= false;
+ 377              	 .loc 2 81 0
+ 378 0152 7B68     	 ldr r3,[r7,#4]
+ 379 0154 0022     	 mov r2,#0
+ 380 0156 9A70     	 strb r2,[r3,#2]
+  82:../DeviceOperation/operation/op_config.c **** 			pvHandShake->isExecuted		= false;
+ 381              	 .loc 2 82 0
+ 382 0158 7B68     	 ldr r3,[r7,#4]
+ 383 015a 0022     	 mov r2,#0
+ 384 015c 1A71     	 strb r2,[r3,#4]
+  62:../DeviceOperation/operation/op_config.c **** 		{
+ 385              	 .loc 2 62 0
+ 386 015e 03E0     	 b .L3
+ 387              	.L9:
+ 388 0160 02E0     	 b .L3
+ 389              	.L8:
+  83:../DeviceOperation/operation/op_config.c **** 		}
+  84:../DeviceOperation/operation/op_config.c **** 	}
+  85:../DeviceOperation/operation/op_config.c **** 	else
+  86:../DeviceOperation/operation/op_config.c **** 	{
+  87:../DeviceOperation/operation/op_config.c **** 		pvHandShake->isExecuted	= false;
+ 390              	 .loc 2 87 0
+ 391 0162 7B68     	 ldr r3,[r7,#4]
+ 392 0164 0022     	 mov r2,#0
+ 393 0166 1A71     	 strb r2,[r3,#4]
+ 394              	.L3:
+  88:../DeviceOperation/operation/op_config.c **** 	}
+  89:../DeviceOperation/operation/op_config.c **** }
+ 395              	 .loc 2 89 0
+ 396 0168 BD46     	 mov sp,r7
+ 397 016a 04B0     	 add sp,sp,#16
+ 398              	 
+ 399 016c 80BD     	 pop {r7,pc}
+ 400              	.L13:
+ 401 016e C046     	 .align 2
+ 402              	.L12:
+ 403 0170 581B0000 	 .word 7000
+ 404 0174 00001643 	 .word 1125515264
+ 405 0178 10270000 	 .word 10000
+ 406 017c 30F8FFFF 	 .word -2000
+ 407              	 .cfi_endproc
+ 408              	.LFE362:
+ 410              	 .section .text.OP_TurnOnPCS,"ax",%progbits
+ 411              	 .align 2
+ 412              	 .global OP_TurnOnPCS
+ 413              	 .code 16
+ 414              	 .thumb_func
+ 416              	OP_TurnOnPCS:
+ 417              	.LFB363:
+  90:../DeviceOperation/operation/op_config.c **** 
+  91:../DeviceOperation/operation/op_config.c **** void OP_TurnOnPCS(OP_STATE_t *state, MISC_HANDSHAKE_PARAM_t *CtrlButton,
+  92:../DeviceOperation/operation/op_config.c **** 				  MISC_CTRL_FLAG_t *ctrlFlag, PCS_BMS_STATUS_t *pcsBmsStatus)
+  93:../DeviceOperation/operation/op_config.c **** {
+ 418              	 .loc 2 93 0
+ 419              	 .cfi_startproc
+ 420 0000 80B5     	 push {r7,lr}
+ 421              	.LCFI6:
+ 422              	 .cfi_def_cfa_offset 8
+ 423              	 .cfi_offset 7,-8
+ 424              	 .cfi_offset 14,-4
+ 425 0002 84B0     	 sub sp,sp,#16
+ 426              	.LCFI7:
+ 427              	 .cfi_def_cfa_offset 24
+ 428 0004 00AF     	 add r7,sp,#0
+ 429              	.LCFI8:
+ 430              	 .cfi_def_cfa_register 7
+ 431 0006 F860     	 str r0,[r7,#12]
+ 432 0008 B960     	 str r1,[r7,#8]
+ 433 000a 7A60     	 str r2,[r7,#4]
+ 434 000c 3B60     	 str r3,[r7]
+  94:../DeviceOperation/operation/op_config.c **** 	static bool isPrechargeExecuted = false;
+  95:../DeviceOperation/operation/op_config.c **** 
+  96:../DeviceOperation/operation/op_config.c **** 	if(!CtrlButton->isExecuted)
+ 435              	 .loc 2 96 0
+ 436 000e BB68     	 ldr r3,[r7,#8]
+ 437 0010 1B79     	 ldrb r3,[r3,#4]
+ 438 0012 0122     	 mov r2,#1
+ 439 0014 5340     	 eor r3,r2
+ 440 0016 DBB2     	 uxtb r3,r3
+ 441 0018 002B     	 cmp r3,#0
+ 442 001a 13D0     	 beq .L15
+  97:../DeviceOperation/operation/op_config.c **** 	{
+  98:../DeviceOperation/operation/op_config.c **** 		/* Turning on Timer if button pressed */
+  99:../DeviceOperation/operation/op_config.c **** 		if(!XMC_GPIO_GetInput(P2_2))
+ 443              	 .loc 2 99 0
+ 444 001c 3A4B     	 ldr r3,.L22
+ 445 001e 181C     	 mov r0,r3
+ 446 0020 0221     	 mov r1,#2
+ 447 0022 FFF7FEFF 	 bl XMC_GPIO_GetInput
+ 448 0026 031E     	 sub r3,r0,#0
+ 449 0028 0CD1     	 bne .L15
+ 100:../DeviceOperation/operation/op_config.c **** 		{
+ 101:../DeviceOperation/operation/op_config.c **** 			CtrlButton->isTimeOut 	= false;
+ 450              	 .loc 2 101 0
+ 451 002a BB68     	 ldr r3,[r7,#8]
+ 452 002c 0022     	 mov r2,#0
+ 453 002e DA70     	 strb r2,[r3,#3]
+ 102:../DeviceOperation/operation/op_config.c **** 			CtrlButton->isEnabled	= true;
+ 454              	 .loc 2 102 0
+ 455 0030 BB68     	 ldr r3,[r7,#8]
+ 456 0032 0122     	 mov r2,#1
+ 457 0034 9A70     	 strb r2,[r3,#2]
+ 103:../DeviceOperation/operation/op_config.c **** 			CtrlButton->cycle		= 2000;
+ 458              	 .loc 2 103 0
+ 459 0036 BB68     	 ldr r3,[r7,#8]
+ 460 0038 FA22     	 mov r2,#250
+ 461 003a D200     	 lsl r2,r2,#3
+ 462 003c 1A80     	 strh r2,[r3]
+ 104:../DeviceOperation/operation/op_config.c **** 			CtrlButton->isExecuted	= true;
+ 463              	 .loc 2 104 0
+ 464 003e BB68     	 ldr r3,[r7,#8]
+ 465 0040 0122     	 mov r2,#1
+ 466 0042 1A71     	 strb r2,[r3,#4]
+ 467              	.L15:
+ 105:../DeviceOperation/operation/op_config.c **** 		}
+ 106:../DeviceOperation/operation/op_config.c **** 	}
+ 107:../DeviceOperation/operation/op_config.c **** 
+ 108:../DeviceOperation/operation/op_config.c **** 	/* Check if it is still being pressed */
+ 109:../DeviceOperation/operation/op_config.c **** 	if(!XMC_GPIO_GetInput(P2_2))
+ 468              	 .loc 2 109 0
+ 469 0044 304B     	 ldr r3,.L22
+ 470 0046 181C     	 mov r0,r3
+ 471 0048 0221     	 mov r1,#2
+ 472 004a FFF7FEFF 	 bl XMC_GPIO_GetInput
+ 473 004e 031E     	 sub r3,r0,#0
+ 474 0050 0AD1     	 bne .L16
+ 110:../DeviceOperation/operation/op_config.c **** 	{
+ 111:../DeviceOperation/operation/op_config.c **** 		if(CtrlButton->isTimeOut)
+ 475              	 .loc 2 111 0
+ 476 0052 BB68     	 ldr r3,[r7,#8]
+ 477 0054 DB78     	 ldrb r3,[r3,#3]
+ 478 0056 002B     	 cmp r3,#0
+ 479 0058 0CD0     	 beq .L18
+ 112:../DeviceOperation/operation/op_config.c **** 		{
+ 113:../DeviceOperation/operation/op_config.c **** 			CtrlButton->isTimeOut = false;
+ 480              	 .loc 2 113 0
+ 481 005a BB68     	 ldr r3,[r7,#8]
+ 482 005c 0022     	 mov r2,#0
+ 483 005e DA70     	 strb r2,[r3,#3]
+ 114:../DeviceOperation/operation/op_config.c **** 			ctrlFlag->isPerforming_Precharge = true;
+ 484              	 .loc 2 114 0
+ 485 0060 7B68     	 ldr r3,[r7,#4]
+ 486 0062 0122     	 mov r2,#1
+ 487 0064 1A70     	 strb r2,[r3]
+ 488 0066 05E0     	 b .L18
+ 489              	.L16:
+ 115:../DeviceOperation/operation/op_config.c **** 		}
+ 116:../DeviceOperation/operation/op_config.c **** 	}
+ 117:../DeviceOperation/operation/op_config.c **** 	else
+ 118:../DeviceOperation/operation/op_config.c **** 	{
+ 119:../DeviceOperation/operation/op_config.c **** 		/* Clear status if button is released */
+ 120:../DeviceOperation/operation/op_config.c **** 		CtrlButton->isExecuted	= false;
+ 490              	 .loc 2 120 0
+ 491 0068 BB68     	 ldr r3,[r7,#8]
+ 492 006a 0022     	 mov r2,#0
+ 493 006c 1A71     	 strb r2,[r3,#4]
+ 121:../DeviceOperation/operation/op_config.c **** 		CtrlButton->isEnabled	= false;
+ 494              	 .loc 2 121 0
+ 495 006e BB68     	 ldr r3,[r7,#8]
+ 496 0070 0022     	 mov r2,#0
+ 497 0072 9A70     	 strb r2,[r3,#2]
+ 498              	.L18:
+ 122:../DeviceOperation/operation/op_config.c **** 	}
+ 123:../DeviceOperation/operation/op_config.c **** 
+ 124:../DeviceOperation/operation/op_config.c **** 	if(ctrlFlag->isPerforming_Precharge)
+ 499              	 .loc 2 124 0
+ 500 0074 7B68     	 ldr r3,[r7,#4]
+ 501 0076 1B78     	 ldrb r3,[r3]
+ 502 0078 002B     	 cmp r3,#0
+ 503 007a 41D0     	 beq .L14
+ 125:../DeviceOperation/operation/op_config.c **** 	{
+ 126:../DeviceOperation/operation/op_config.c **** 		if(!isPrechargeExecuted)
+ 504              	 .loc 2 126 0
+ 505 007c 234B     	 ldr r3,.L22+4
+ 506 007e 1B78     	 ldrb r3,[r3]
+ 507 0080 0122     	 mov r2,#1
+ 508 0082 5340     	 eor r3,r2
+ 509 0084 DBB2     	 uxtb r3,r3
+ 510 0086 002B     	 cmp r3,#0
+ 511 0088 0ED0     	 beq .L20
+ 127:../DeviceOperation/operation/op_config.c **** 		{
+ 128:../DeviceOperation/operation/op_config.c **** 			pcsBmsStatus->bms_main_relay 		= RELAY_OPEN;
+ 512              	 .loc 2 128 0
+ 513 008a 3B68     	 ldr r3,[r7]
+ 514 008c 0022     	 mov r2,#0
+ 515 008e 9A70     	 strb r2,[r3,#2]
+ 129:../DeviceOperation/operation/op_config.c **** 			pcsBmsStatus->bms_precharge_relay	= RELAY_CLOSE;
+ 516              	 .loc 2 129 0
+ 517 0090 3B68     	 ldr r3,[r7]
+ 518 0092 0122     	 mov r2,#1
+ 519 0094 DA70     	 strb r2,[r3,#3]
+ 130:../DeviceOperation/operation/op_config.c **** 			pcsBmsStatus->bms_status			= BMU_PRECHARGE;
+ 520              	 .loc 2 130 0
+ 521 0096 3B68     	 ldr r3,[r7]
+ 522 0098 0122     	 mov r2,#1
+ 523 009a 1A70     	 strb r2,[r3]
+ 131:../DeviceOperation/operation/op_config.c **** 			pcsBmsStatus->bms_pcs_command		= BMU_PCS_STOP;
+ 524              	 .loc 2 131 0
+ 525 009c 3B68     	 ldr r3,[r7]
+ 526 009e 0022     	 mov r2,#0
+ 527 00a0 5A70     	 strb r2,[r3,#1]
+ 132:../DeviceOperation/operation/op_config.c **** 			isPrechargeExecuted					= true;
+ 528              	 .loc 2 132 0
+ 529 00a2 1A4B     	 ldr r3,.L22+4
+ 530 00a4 0122     	 mov r2,#1
+ 531 00a6 1A70     	 strb r2,[r3]
+ 532              	.L20:
+ 133:../DeviceOperation/operation/op_config.c **** 		}
+ 134:../DeviceOperation/operation/op_config.c **** 
+ 135:../DeviceOperation/operation/op_config.c **** 		if(pcsSystemStatus.pcs_precharge_IsComplete)
+ 533              	 .loc 2 135 0
+ 534 00a8 194B     	 ldr r3,.L22+8
+ 535 00aa 5B78     	 ldrb r3,[r3,#1]
+ 536 00ac 002B     	 cmp r3,#0
+ 537 00ae 27D0     	 beq .L14
+ 136:../DeviceOperation/operation/op_config.c **** 		{
+ 137:../DeviceOperation/operation/op_config.c **** 			/* CLose Main Relay */
+ 138:../DeviceOperation/operation/op_config.c **** 			PDU_Switch_Relay(PDU_RELAY_KMP, PDU_RELAY_CLOSE);
+ 538              	 .loc 2 138 0
+ 539 00b0 0120     	 mov r0,#1
+ 540 00b2 0121     	 mov r1,#1
+ 541 00b4 FFF7FEFF 	 bl PDU_Switch_Relay
+ 139:../DeviceOperation/operation/op_config.c **** 
+ 140:../DeviceOperation/operation/op_config.c **** 			/* Create 10 us Delay */
+ 141:../DeviceOperation/operation/op_config.c **** 			sysTickFlag = true;
+ 542              	 .loc 2 141 0
+ 543 00b8 164B     	 ldr r3,.L22+12
+ 544 00ba 0122     	 mov r2,#1
+ 545 00bc 1A70     	 strb r2,[r3]
+ 546              	.L21:
+ 142:../DeviceOperation/operation/op_config.c **** 			while(sysTickFlag){}
+ 547              	 .loc 2 142 0 discriminator 1
+ 548 00be 154B     	 ldr r3,.L22+12
+ 549 00c0 1B78     	 ldrb r3,[r3]
+ 550 00c2 002B     	 cmp r3,#0
+ 551 00c4 FBD1     	 bne .L21
+ 143:../DeviceOperation/operation/op_config.c **** 
+ 144:../DeviceOperation/operation/op_config.c **** 			/* Open Predischarge Relay */
+ 145:../DeviceOperation/operation/op_config.c **** 			PDU_Switch_Relay(PDU_RELAY_KDSG, PDU_RELAY_OPEN);
+ 552              	 .loc 2 145 0
+ 553 00c6 0320     	 mov r0,#3
+ 554 00c8 0021     	 mov r1,#0
+ 555 00ca FFF7FEFF 	 bl PDU_Switch_Relay
+ 146:../DeviceOperation/operation/op_config.c **** 
+ 147:../DeviceOperation/operation/op_config.c **** 			pcsBmsStatus->bms_main_relay		= RELAY_CLOSE;
+ 556              	 .loc 2 147 0
+ 557 00ce 3B68     	 ldr r3,[r7]
+ 558 00d0 0122     	 mov r2,#1
+ 559 00d2 9A70     	 strb r2,[r3,#2]
+ 148:../DeviceOperation/operation/op_config.c **** 			pcsBmsStatus->bms_precharge_relay	= RELAY_OPEN;
+ 560              	 .loc 2 148 0
+ 561 00d4 3B68     	 ldr r3,[r7]
+ 562 00d6 0022     	 mov r2,#0
+ 563 00d8 DA70     	 strb r2,[r3,#3]
+ 149:../DeviceOperation/operation/op_config.c **** 			pcsBmsStatus->bms_status			= BMU_RUNNING;
+ 564              	 .loc 2 149 0
+ 565 00da 3B68     	 ldr r3,[r7]
+ 566 00dc 0222     	 mov r2,#2
+ 567 00de 1A70     	 strb r2,[r3]
+ 150:../DeviceOperation/operation/op_config.c **** 			pcsBmsStatus->bms_pcs_command		= BMU_PCS_START;
+ 568              	 .loc 2 150 0
+ 569 00e0 3B68     	 ldr r3,[r7]
+ 570 00e2 0122     	 mov r2,#1
+ 571 00e4 5A70     	 strb r2,[r3,#1]
+ 151:../DeviceOperation/operation/op_config.c **** 
+ 152:../DeviceOperation/operation/op_config.c **** 			*state = OP_RUNNING;
+ 572              	 .loc 2 152 0
+ 573 00e6 FB68     	 ldr r3,[r7,#12]
+ 574 00e8 0222     	 mov r2,#2
+ 575 00ea 1A70     	 strb r2,[r3]
+ 153:../DeviceOperation/operation/op_config.c **** 
+ 154:../DeviceOperation/operation/op_config.c **** 			/* close battery relay */
+ 155:../DeviceOperation/operation/op_config.c **** 			PDU_Switch_Relay(PDU_RELAY_KBAT, PDU_RELAY_CLOSE);
+ 576              	 .loc 2 155 0
+ 577 00ec 0020     	 mov r0,#0
+ 578 00ee 0121     	 mov r1,#1
+ 579 00f0 FFF7FEFF 	 bl PDU_Switch_Relay
+ 156:../DeviceOperation/operation/op_config.c **** 			isPrechargeExecuted					= false;
+ 580              	 .loc 2 156 0
+ 581 00f4 054B     	 ldr r3,.L22+4
+ 582 00f6 0022     	 mov r2,#0
+ 583 00f8 1A70     	 strb r2,[r3]
+ 157:../DeviceOperation/operation/op_config.c **** 			ctrlFlag->isPerforming_Precharge	= false;
+ 584              	 .loc 2 157 0
+ 585 00fa 7B68     	 ldr r3,[r7,#4]
+ 586 00fc 0022     	 mov r2,#0
+ 587 00fe 1A70     	 strb r2,[r3]
+ 588              	.L14:
+ 158:../DeviceOperation/operation/op_config.c **** 		}
+ 159:../DeviceOperation/operation/op_config.c **** 	}
+ 160:../DeviceOperation/operation/op_config.c **** }
+ 589              	 .loc 2 160 0
+ 590 0100 BD46     	 mov sp,r7
+ 591 0102 04B0     	 add sp,sp,#16
+ 592              	 
+ 593 0104 80BD     	 pop {r7,pc}
+ 594              	.L23:
+ 595 0106 C046     	 .align 2
+ 596              	.L22:
+ 597 0108 00020440 	 .word 1074004480
+ 598 010c 00000000 	 .word isPrechargeExecuted.10835
+ 599 0110 00000000 	 .word pcsSystemStatus
+ 600 0114 00000000 	 .word sysTickFlag
+ 601              	 .cfi_endproc
+ 602              	.LFE363:
+ 604              	 .section .text.OP_CheckingPCSStatus,"ax",%progbits
+ 605              	 .align 2
+ 606              	 .global OP_CheckingPCSStatus
+ 607              	 .code 16
+ 608              	 .thumb_func
+ 610              	OP_CheckingPCSStatus:
+ 611              	.LFB364:
+ 161:../DeviceOperation/operation/op_config.c **** 
+ 162:../DeviceOperation/operation/op_config.c **** void OP_CheckingPCSStatus(OP_STATE_t *state, PCS_STATUS_t *pcsStatus,
+ 163:../DeviceOperation/operation/op_config.c **** 						  MISC_HANDSHAKE_PARAM_t *CtrlButton,
+ 164:../DeviceOperation/operation/op_config.c **** 						  MISC_CTRL_FLAG_t *ctrlFlag)
+ 165:../DeviceOperation/operation/op_config.c **** {
+ 612              	 .loc 2 165 0
+ 613              	 .cfi_startproc
+ 614 0000 80B5     	 push {r7,lr}
+ 615              	.LCFI9:
+ 616              	 .cfi_def_cfa_offset 8
+ 617              	 .cfi_offset 7,-8
+ 618              	 .cfi_offset 14,-4
+ 619 0002 84B0     	 sub sp,sp,#16
+ 620              	.LCFI10:
+ 621              	 .cfi_def_cfa_offset 24
+ 622 0004 00AF     	 add r7,sp,#0
+ 623              	.LCFI11:
+ 624              	 .cfi_def_cfa_register 7
+ 625 0006 F860     	 str r0,[r7,#12]
+ 626 0008 B960     	 str r1,[r7,#8]
+ 627 000a 7A60     	 str r2,[r7,#4]
+ 628 000c 3B60     	 str r3,[r7]
+ 166:../DeviceOperation/operation/op_config.c **** 	static bool isPutToStandbyExecuted = false;
+ 167:../DeviceOperation/operation/op_config.c **** 
+ 168:../DeviceOperation/operation/op_config.c **** 	/* 1. Check PCS Warning Status */
+ 169:../DeviceOperation/operation/op_config.c **** 	if(pcsStatus->pcs_system_status == PCS_STAT_STANDBY)
+ 629              	 .loc 2 169 0
+ 630 000e BB68     	 ldr r3,[r7,#8]
+ 631 0010 1B78     	 ldrb r3,[r3]
+ 632 0012 042B     	 cmp r3,#4
+ 633 0014 02D1     	 bne .L25
+ 170:../DeviceOperation/operation/op_config.c **** 	{
+ 171:../DeviceOperation/operation/op_config.c **** 		*state = OP_ERROR;
+ 634              	 .loc 2 171 0
+ 635 0016 FB68     	 ldr r3,[r7,#12]
+ 636 0018 0422     	 mov r2,#4
+ 637 001a 1A70     	 strb r2,[r3]
+ 638              	.L25:
+ 172:../DeviceOperation/operation/op_config.c **** 	}
+ 173:../DeviceOperation/operation/op_config.c **** 
+ 174:../DeviceOperation/operation/op_config.c **** 	/* 2. Check Standby Button */
+ 175:../DeviceOperation/operation/op_config.c **** 	if(!CtrlButton->isExecuted && (!ctrlFlag->isAuto_mode))
+ 639              	 .loc 2 175 0
+ 640 001c 7B68     	 ldr r3,[r7,#4]
+ 641 001e 1B79     	 ldrb r3,[r3,#4]
+ 642 0020 0122     	 mov r2,#1
+ 643 0022 5340     	 eor r3,r2
+ 644 0024 DBB2     	 uxtb r3,r3
+ 645 0026 002B     	 cmp r3,#0
+ 646 0028 19D0     	 beq .L26
+ 647              	 .loc 2 175 0 is_stmt 0 discriminator 1
+ 648 002a 3B68     	 ldr r3,[r7]
+ 649 002c 9B78     	 ldrb r3,[r3,#2]
+ 650 002e 0122     	 mov r2,#1
+ 651 0030 5340     	 eor r3,r2
+ 652 0032 DBB2     	 uxtb r3,r3
+ 653 0034 002B     	 cmp r3,#0
+ 654 0036 12D0     	 beq .L26
+ 176:../DeviceOperation/operation/op_config.c **** 	{
+ 177:../DeviceOperation/operation/op_config.c **** 		if(!XMC_GPIO_GetInput(P2_2))
+ 655              	 .loc 2 177 0 is_stmt 1
+ 656 0038 264B     	 ldr r3,.L31
+ 657 003a 181C     	 mov r0,r3
+ 658 003c 0221     	 mov r1,#2
+ 659 003e FFF7FEFF 	 bl XMC_GPIO_GetInput
+ 660 0042 031E     	 sub r3,r0,#0
+ 661 0044 0BD1     	 bne .L26
+ 178:../DeviceOperation/operation/op_config.c **** 		{
+ 179:../DeviceOperation/operation/op_config.c **** 			CtrlButton->isTimeOut	= false;
+ 662              	 .loc 2 179 0
+ 663 0046 7B68     	 ldr r3,[r7,#4]
+ 664 0048 0022     	 mov r2,#0
+ 665 004a DA70     	 strb r2,[r3,#3]
+ 180:../DeviceOperation/operation/op_config.c **** 			CtrlButton->isEnabled	= true;
+ 666              	 .loc 2 180 0
+ 667 004c 7B68     	 ldr r3,[r7,#4]
+ 668 004e 0122     	 mov r2,#1
+ 669 0050 9A70     	 strb r2,[r3,#2]
+ 181:../DeviceOperation/operation/op_config.c **** 			CtrlButton->cycle		= 3000;
+ 670              	 .loc 2 181 0
+ 671 0052 7B68     	 ldr r3,[r7,#4]
+ 672 0054 204A     	 ldr r2,.L31+4
+ 673 0056 1A80     	 strh r2,[r3]
+ 182:../DeviceOperation/operation/op_config.c **** 			CtrlButton->isExecuted	= true;
+ 674              	 .loc 2 182 0
+ 675 0058 7B68     	 ldr r3,[r7,#4]
+ 676 005a 0122     	 mov r2,#1
+ 677 005c 1A71     	 strb r2,[r3,#4]
+ 678              	.L26:
+ 183:../DeviceOperation/operation/op_config.c **** 		}
+ 184:../DeviceOperation/operation/op_config.c **** 	}
+ 185:../DeviceOperation/operation/op_config.c **** 
+ 186:../DeviceOperation/operation/op_config.c **** 	/* Check if it is still being pressed */
+ 187:../DeviceOperation/operation/op_config.c **** 	if(!XMC_GPIO_GetInput(P2_2) && (!isPutToStandbyExecuted))
+ 679              	 .loc 2 187 0
+ 680 005e 1D4B     	 ldr r3,.L31
+ 681 0060 181C     	 mov r0,r3
+ 682 0062 0221     	 mov r1,#2
+ 683 0064 FFF7FEFF 	 bl XMC_GPIO_GetInput
+ 684 0068 031E     	 sub r3,r0,#0
+ 685 006a 12D1     	 bne .L27
+ 686              	 .loc 2 187 0 is_stmt 0 discriminator 1
+ 687 006c 1B4B     	 ldr r3,.L31+8
+ 688 006e 1B78     	 ldrb r3,[r3]
+ 689 0070 0122     	 mov r2,#1
+ 690 0072 5340     	 eor r3,r2
+ 691 0074 DBB2     	 uxtb r3,r3
+ 692 0076 002B     	 cmp r3,#0
+ 693 0078 0BD0     	 beq .L27
+ 188:../DeviceOperation/operation/op_config.c **** 	{
+ 189:../DeviceOperation/operation/op_config.c **** 		if(CtrlButton->isTimeOut)
+ 694              	 .loc 2 189 0 is_stmt 1
+ 695 007a 7B68     	 ldr r3,[r7,#4]
+ 696 007c DB78     	 ldrb r3,[r3,#3]
+ 697 007e 002B     	 cmp r3,#0
+ 698 0080 06D0     	 beq .L28
+ 190:../DeviceOperation/operation/op_config.c **** 		{
+ 191:../DeviceOperation/operation/op_config.c **** 			isPutToStandbyExecuted	= true;
+ 699              	 .loc 2 191 0
+ 700 0082 164B     	 ldr r3,.L31+8
+ 701 0084 0122     	 mov r2,#1
+ 702 0086 1A70     	 strb r2,[r3]
+ 192:../DeviceOperation/operation/op_config.c **** 			CtrlButton->isTimeOut	= false;
+ 703              	 .loc 2 192 0
+ 704 0088 7B68     	 ldr r3,[r7,#4]
+ 705 008a 0022     	 mov r2,#0
+ 706 008c DA70     	 strb r2,[r3,#3]
+ 189:../DeviceOperation/operation/op_config.c **** 		{
+ 707              	 .loc 2 189 0
+ 708 008e 06E0     	 b .L29
+ 709              	.L28:
+ 710 0090 05E0     	 b .L29
+ 711              	.L27:
+ 193:../DeviceOperation/operation/op_config.c **** 		}
+ 194:../DeviceOperation/operation/op_config.c **** 	}
+ 195:../DeviceOperation/operation/op_config.c **** 	else
+ 196:../DeviceOperation/operation/op_config.c **** 	{
+ 197:../DeviceOperation/operation/op_config.c **** 		/* Clear status if button is released */
+ 198:../DeviceOperation/operation/op_config.c **** 		CtrlButton->isExecuted	= false;
+ 712              	 .loc 2 198 0
+ 713 0092 7B68     	 ldr r3,[r7,#4]
+ 714 0094 0022     	 mov r2,#0
+ 715 0096 1A71     	 strb r2,[r3,#4]
+ 199:../DeviceOperation/operation/op_config.c **** 		CtrlButton->isEnabled	= false;
+ 716              	 .loc 2 199 0
+ 717 0098 7B68     	 ldr r3,[r7,#4]
+ 718 009a 0022     	 mov r2,#0
+ 719 009c 9A70     	 strb r2,[r3,#2]
+ 720              	.L29:
+ 200:../DeviceOperation/operation/op_config.c **** 	}
+ 201:../DeviceOperation/operation/op_config.c **** 
+ 202:../DeviceOperation/operation/op_config.c **** 	/* Change to STANDBY upon the timer's time-out and button is released */
+ 203:../DeviceOperation/operation/op_config.c **** 	if(isPutToStandbyExecuted)
+ 721              	 .loc 2 203 0
+ 722 009e 0F4B     	 ldr r3,.L31+8
+ 723 00a0 1B78     	 ldrb r3,[r3]
+ 724 00a2 002B     	 cmp r3,#0
+ 725 00a4 12D0     	 beq .L24
+ 204:../DeviceOperation/operation/op_config.c **** 	{
+ 205:../DeviceOperation/operation/op_config.c **** 		if(XMC_GPIO_GetInput(P2_2))
+ 726              	 .loc 2 205 0
+ 727 00a6 0B4B     	 ldr r3,.L31
+ 728 00a8 181C     	 mov r0,r3
+ 729 00aa 0221     	 mov r1,#2
+ 730 00ac FFF7FEFF 	 bl XMC_GPIO_GetInput
+ 731 00b0 031E     	 sub r3,r0,#0
+ 732 00b2 0BD0     	 beq .L24
+ 206:../DeviceOperation/operation/op_config.c **** 		{
+ 207:../DeviceOperation/operation/op_config.c **** 			isPutToStandbyExecuted	= false;
+ 733              	 .loc 2 207 0
+ 734 00b4 094B     	 ldr r3,.L31+8
+ 735 00b6 0022     	 mov r2,#0
+ 736 00b8 1A70     	 strb r2,[r3]
+ 208:../DeviceOperation/operation/op_config.c **** 			*state					= OP_STANDBY;
+ 737              	 .loc 2 208 0
+ 738 00ba FB68     	 ldr r3,[r7,#12]
+ 739 00bc 0322     	 mov r2,#3
+ 740 00be 1A70     	 strb r2,[r3]
+ 209:../DeviceOperation/operation/op_config.c **** 			CtrlButton->isEnabled	= false;
+ 741              	 .loc 2 209 0
+ 742 00c0 7B68     	 ldr r3,[r7,#4]
+ 743 00c2 0022     	 mov r2,#0
+ 744 00c4 9A70     	 strb r2,[r3,#2]
+ 210:../DeviceOperation/operation/op_config.c **** 			CtrlButton->isExecuted	= false;
+ 745              	 .loc 2 210 0
+ 746 00c6 7B68     	 ldr r3,[r7,#4]
+ 747 00c8 0022     	 mov r2,#0
+ 748 00ca 1A71     	 strb r2,[r3,#4]
+ 749              	.L24:
+ 211:../DeviceOperation/operation/op_config.c **** 		}
+ 212:../DeviceOperation/operation/op_config.c **** 	}
+ 213:../DeviceOperation/operation/op_config.c **** }
+ 750              	 .loc 2 213 0
+ 751 00cc BD46     	 mov sp,r7
+ 752 00ce 04B0     	 add sp,sp,#16
+ 753              	 
+ 754 00d0 80BD     	 pop {r7,pc}
+ 755              	.L32:
+ 756 00d2 C046     	 .align 2
+ 757              	.L31:
+ 758 00d4 00020440 	 .word 1074004480
+ 759 00d8 B80B0000 	 .word 3000
+ 760 00dc 00000000 	 .word isPutToStandbyExecuted.10845
+ 761              	 .cfi_endproc
+ 762              	.LFE364:
+ 764              	 .section .text.OP_PutSystemStandby,"ax",%progbits
+ 765              	 .align 2
+ 766              	 .global OP_PutSystemStandby
+ 767              	 .code 16
+ 768              	 .thumb_func
+ 770              	OP_PutSystemStandby:
+ 771              	.LFB365:
+ 214:../DeviceOperation/operation/op_config.c **** 
+ 215:../DeviceOperation/operation/op_config.c **** void OP_PutSystemStandby(OP_STATE_t *state, PCS_STATUS_t *pcsStatus,
+ 216:../DeviceOperation/operation/op_config.c **** 						 MISC_HANDSHAKE_PARAM_t *CtrlButton,
+ 217:../DeviceOperation/operation/op_config.c **** 						 MISC_CTRL_FLAG_t *ctrlFlag,
+ 218:../DeviceOperation/operation/op_config.c **** 						 PCS_BMS_STATUS_t *pcsBmsStatus)
+ 219:../DeviceOperation/operation/op_config.c **** {
+ 772              	 .loc 2 219 0
+ 773              	 .cfi_startproc
+ 774 0000 80B5     	 push {r7,lr}
+ 775              	.LCFI12:
+ 776              	 .cfi_def_cfa_offset 8
+ 777              	 .cfi_offset 7,-8
+ 778              	 .cfi_offset 14,-4
+ 779 0002 84B0     	 sub sp,sp,#16
+ 780              	.LCFI13:
+ 781              	 .cfi_def_cfa_offset 24
+ 782 0004 00AF     	 add r7,sp,#0
+ 783              	.LCFI14:
+ 784              	 .cfi_def_cfa_register 7
+ 785 0006 F860     	 str r0,[r7,#12]
+ 786 0008 B960     	 str r1,[r7,#8]
+ 787 000a 7A60     	 str r2,[r7,#4]
+ 788 000c 3B60     	 str r3,[r7]
+ 220:../DeviceOperation/operation/op_config.c **** 	static bool isStandbyExecuted = false;
+ 221:../DeviceOperation/operation/op_config.c **** 	if(pcsStatus->pcs_system_status == PCS_STAT_RUNNING)
+ 789              	 .loc 2 221 0
+ 790 000e BB68     	 ldr r3,[r7,#8]
+ 791 0010 1B78     	 ldrb r3,[r3]
+ 792 0012 062B     	 cmp r3,#6
+ 793 0014 0CD1     	 bne .L34
+ 222:../DeviceOperation/operation/op_config.c **** 	{
+ 223:../DeviceOperation/operation/op_config.c **** 		if(!isStandbyExecuted)
+ 794              	 .loc 2 223 0
+ 795 0016 194B     	 ldr r3,.L37
+ 796 0018 1B78     	 ldrb r3,[r3]
+ 797 001a 0122     	 mov r2,#1
+ 798 001c 5340     	 eor r3,r2
+ 799 001e DBB2     	 uxtb r3,r3
+ 800 0020 002B     	 cmp r3,#0
+ 801 0022 05D0     	 beq .L34
+ 224:../DeviceOperation/operation/op_config.c **** 		{
+ 225:../DeviceOperation/operation/op_config.c **** 			pcsBmsStatus->bms_pcs_command = BMU_PCS_STOP;
+ 802              	 .loc 2 225 0
+ 803 0024 BB69     	 ldr r3,[r7,#24]
+ 804 0026 0022     	 mov r2,#0
+ 805 0028 5A70     	 strb r2,[r3,#1]
+ 226:../DeviceOperation/operation/op_config.c **** 			isStandbyExecuted = true;
+ 806              	 .loc 2 226 0
+ 807 002a 144B     	 ldr r3,.L37
+ 808 002c 0122     	 mov r2,#1
+ 809 002e 1A70     	 strb r2,[r3]
+ 810              	.L34:
+ 227:../DeviceOperation/operation/op_config.c **** 		}
+ 228:../DeviceOperation/operation/op_config.c **** 	}
+ 229:../DeviceOperation/operation/op_config.c **** 
+ 230:../DeviceOperation/operation/op_config.c **** 	if(pcsStatus->pcs_system_status == PCS_STAT_STANDBY)
+ 811              	 .loc 2 230 0
+ 812 0030 BB68     	 ldr r3,[r7,#8]
+ 813 0032 1B78     	 ldrb r3,[r3]
+ 814 0034 042B     	 cmp r3,#4
+ 815 0036 1DD1     	 bne .L33
+ 231:../DeviceOperation/operation/op_config.c **** 	{
+ 232:../DeviceOperation/operation/op_config.c **** 		/* Open Pre Discharge Relay */
+ 233:../DeviceOperation/operation/op_config.c **** 		PDU_Switch_Relay(PDU_RELAY_KDSG, PDU_RELAY_OPEN);
+ 816              	 .loc 2 233 0
+ 817 0038 0320     	 mov r0,#3
+ 818 003a 0021     	 mov r1,#0
+ 819 003c FFF7FEFF 	 bl PDU_Switch_Relay
+ 234:../DeviceOperation/operation/op_config.c **** 
+ 235:../DeviceOperation/operation/op_config.c **** 		/* Create 10 us Delay */
+ 236:../DeviceOperation/operation/op_config.c **** 		sysTickFlag = true;
+ 820              	 .loc 2 236 0
+ 821 0040 0F4B     	 ldr r3,.L37+4
+ 822 0042 0122     	 mov r2,#1
+ 823 0044 1A70     	 strb r2,[r3]
+ 824              	.L36:
+ 237:../DeviceOperation/operation/op_config.c **** 		while(sysTickFlag){}
+ 825              	 .loc 2 237 0 discriminator 1
+ 826 0046 0E4B     	 ldr r3,.L37+4
+ 827 0048 1B78     	 ldrb r3,[r3]
+ 828 004a 002B     	 cmp r3,#0
+ 829 004c FBD1     	 bne .L36
+ 238:../DeviceOperation/operation/op_config.c **** 
+ 239:../DeviceOperation/operation/op_config.c **** 		/* Open Main Relay */
+ 240:../DeviceOperation/operation/op_config.c **** 		PDU_Switch_Relay(PDU_RELAY_KMP, PDU_RELAY_OPEN);
+ 830              	 .loc 2 240 0
+ 831 004e 0120     	 mov r0,#1
+ 832 0050 0021     	 mov r1,#0
+ 833 0052 FFF7FEFF 	 bl PDU_Switch_Relay
+ 241:../DeviceOperation/operation/op_config.c **** 
+ 242:../DeviceOperation/operation/op_config.c **** 		pcsBmsStatus->bms_main_relay		= RELAY_OPEN;
+ 834              	 .loc 2 242 0
+ 835 0056 BB69     	 ldr r3,[r7,#24]
+ 836 0058 0022     	 mov r2,#0
+ 837 005a 9A70     	 strb r2,[r3,#2]
+ 243:../DeviceOperation/operation/op_config.c **** 		pcsBmsStatus->bms_precharge_relay	= RELAY_OPEN;
+ 838              	 .loc 2 243 0
+ 839 005c BB69     	 ldr r3,[r7,#24]
+ 840 005e 0022     	 mov r2,#0
+ 841 0060 DA70     	 strb r2,[r3,#3]
+ 244:../DeviceOperation/operation/op_config.c **** 		pcsBmsStatus->bms_status			= BMU_PRECHARGE;
+ 842              	 .loc 2 244 0
+ 843 0062 BB69     	 ldr r3,[r7,#24]
+ 844 0064 0122     	 mov r2,#1
+ 845 0066 1A70     	 strb r2,[r3]
+ 245:../DeviceOperation/operation/op_config.c **** 
+ 246:../DeviceOperation/operation/op_config.c **** 		*state = OP_TURN_ON;
+ 846              	 .loc 2 246 0
+ 847 0068 FB68     	 ldr r3,[r7,#12]
+ 848 006a 0122     	 mov r2,#1
+ 849 006c 1A70     	 strb r2,[r3]
+ 247:../DeviceOperation/operation/op_config.c **** 		isStandbyExecuted = false;
+ 850              	 .loc 2 247 0
+ 851 006e 034B     	 ldr r3,.L37
+ 852 0070 0022     	 mov r2,#0
+ 853 0072 1A70     	 strb r2,[r3]
+ 854              	.L33:
+ 248:../DeviceOperation/operation/op_config.c **** 	}
+ 249:../DeviceOperation/operation/op_config.c **** }
+ 855              	 .loc 2 249 0
+ 856 0074 BD46     	 mov sp,r7
+ 857 0076 04B0     	 add sp,sp,#16
+ 858              	 
+ 859 0078 80BD     	 pop {r7,pc}
+ 860              	.L38:
+ 861 007a C046     	 .align 2
+ 862              	.L37:
+ 863 007c 00000000 	 .word isStandbyExecuted.10853
+ 864 0080 00000000 	 .word sysTickFlag
+ 865              	 .cfi_endproc
+ 866              	.LFE365:
+ 868              	 .section .text.OP_HandlingPCSWarning,"ax",%progbits
+ 869              	 .align 2
+ 870              	 .global OP_HandlingPCSWarning
+ 871              	 .code 16
+ 872              	 .thumb_func
+ 874              	OP_HandlingPCSWarning:
+ 875              	.LFB366:
+ 250:../DeviceOperation/operation/op_config.c **** 
+ 251:../DeviceOperation/operation/op_config.c **** void OP_HandlingPCSWarning(OP_STATE_t *state, PCS_STATUS_t *pcsStatus,
+ 252:../DeviceOperation/operation/op_config.c **** 						   MISC_HANDSHAKE_PARAM_t *CtrlButton,
+ 253:../DeviceOperation/operation/op_config.c **** 						   MISC_CTRL_FLAG_t *ctrlFlag, BMS_PARAMETER_t *bmsParam,
+ 254:../DeviceOperation/operation/op_config.c **** 						   PCS_BMS_STATUS_t *pcsBmsStatus)
+ 255:../DeviceOperation/operation/op_config.c **** {
+ 876              	 .loc 2 255 0
+ 877              	 .cfi_startproc
+ 878 0000 80B5     	 push {r7,lr}
+ 879              	.LCFI15:
+ 880              	 .cfi_def_cfa_offset 8
+ 881              	 .cfi_offset 7,-8
+ 882              	 .cfi_offset 14,-4
+ 883 0002 84B0     	 sub sp,sp,#16
+ 884              	.LCFI16:
+ 885              	 .cfi_def_cfa_offset 24
+ 886 0004 00AF     	 add r7,sp,#0
+ 887              	.LCFI17:
+ 888              	 .cfi_def_cfa_register 7
+ 889 0006 F860     	 str r0,[r7,#12]
+ 890 0008 B960     	 str r1,[r7,#8]
+ 891 000a 7A60     	 str r2,[r7,#4]
+ 892 000c 3B60     	 str r3,[r7]
+ 256:../DeviceOperation/operation/op_config.c **** 
+ 257:../DeviceOperation/operation/op_config.c **** 	/* 1. if error elapsed, attempt for change PCS to RUN state */
+ 258:../DeviceOperation/operation/op_config.c **** 	if(!ctrlFlag->isStandby)
+ 893              	 .loc 2 258 0
+ 894 000e 3B68     	 ldr r3,[r7]
+ 895 0010 5B78     	 ldrb r3,[r3,#1]
+ 896 0012 0122     	 mov r2,#1
+ 897 0014 5340     	 eor r3,r2
+ 898 0016 DBB2     	 uxtb r3,r3
+ 899 0018 002B     	 cmp r3,#0
+ 900 001a 02D0     	 beq .L40
+ 259:../DeviceOperation/operation/op_config.c **** 	{
+ 260:../DeviceOperation/operation/op_config.c **** 		pcsBmsStatus->bms_pcs_command = BMU_PCS_START;
+ 901              	 .loc 2 260 0
+ 902 001c FB69     	 ldr r3,[r7,#28]
+ 903 001e 0122     	 mov r2,#1
+ 904 0020 5A70     	 strb r2,[r3,#1]
+ 905              	.L40:
+ 261:../DeviceOperation/operation/op_config.c **** 	}
+ 262:../DeviceOperation/operation/op_config.c **** 
+ 263:../DeviceOperation/operation/op_config.c **** 	/* 1. if PCS acknowledged that already change to RUN, return the state to RUNNING */
+ 264:../DeviceOperation/operation/op_config.c **** 	if(pcsStatus->pcs_system_status == PCS_STAT_RUNNING)
+ 906              	 .loc 2 264 0
+ 907 0022 BB68     	 ldr r3,[r7,#8]
+ 908 0024 1B78     	 ldrb r3,[r3]
+ 909 0026 062B     	 cmp r3,#6
+ 910 0028 02D1     	 bne .L41
+ 265:../DeviceOperation/operation/op_config.c **** 	{
+ 266:../DeviceOperation/operation/op_config.c **** 		*state = OP_RUNNING;
+ 911              	 .loc 2 266 0
+ 912 002a FB68     	 ldr r3,[r7,#12]
+ 913 002c 0222     	 mov r2,#2
+ 914 002e 1A70     	 strb r2,[r3]
+ 915              	.L41:
+ 267:../DeviceOperation/operation/op_config.c **** 	}
+ 268:../DeviceOperation/operation/op_config.c **** 
+ 269:../DeviceOperation/operation/op_config.c **** 	/* 2. Check SoC Level */
+ 270:../DeviceOperation/operation/op_config.c **** 	/* force shutdown */
+ 271:../DeviceOperation/operation/op_config.c **** 	//if(ctrlFlag->isForced_shut_down){bmsParam->soc = 2;}
+ 272:../DeviceOperation/operation/op_config.c **** 	if((bmsParam->soc <= 50) && (!ctrlFlag->isBypass_power_mode))
+ 916              	 .loc 2 272 0
+ 917 0030 BB69     	 ldr r3,[r7,#24]
+ 918 0032 1B88     	 ldrh r3,[r3]
+ 919 0034 322B     	 cmp r3,#50
+ 920 0036 09D8     	 bhi .L39
+ 921              	 .loc 2 272 0 is_stmt 0 discriminator 1
+ 922 0038 3B68     	 ldr r3,[r7]
+ 923 003a DB78     	 ldrb r3,[r3,#3]
+ 924 003c 0122     	 mov r2,#1
+ 925 003e 5340     	 eor r3,r2
+ 926 0040 DBB2     	 uxtb r3,r3
+ 927 0042 002B     	 cmp r3,#0
+ 928 0044 02D0     	 beq .L39
+ 273:../DeviceOperation/operation/op_config.c **** 	{
+ 274:../DeviceOperation/operation/op_config.c **** 		*state = OP_SHUTDOWN;
+ 929              	 .loc 2 274 0 is_stmt 1
+ 930 0046 FB68     	 ldr r3,[r7,#12]
+ 931 0048 0522     	 mov r2,#5
+ 932 004a 1A70     	 strb r2,[r3]
+ 933              	.L39:
+ 275:../DeviceOperation/operation/op_config.c **** 	}
+ 276:../DeviceOperation/operation/op_config.c **** }
+ 934              	 .loc 2 276 0
+ 935 004c BD46     	 mov sp,r7
+ 936 004e 04B0     	 add sp,sp,#16
+ 937              	 
+ 938 0050 80BD     	 pop {r7,pc}
+ 939              	 .cfi_endproc
+ 940              	.LFE366:
+ 942 0052 C046     	 .section .text.OP_PutSystemShutDown,"ax",%progbits
+ 943              	 .align 2
+ 944              	 .global OP_PutSystemShutDown
+ 945              	 .code 16
+ 946              	 .thumb_func
+ 948              	OP_PutSystemShutDown:
+ 949              	.LFB367:
+ 277:../DeviceOperation/operation/op_config.c **** 
+ 278:../DeviceOperation/operation/op_config.c **** void OP_PutSystemShutDown(OP_STATE_t *state, MISC_HANDSHAKE_PARAM_t *CtrlButton)
+ 279:../DeviceOperation/operation/op_config.c **** {
+ 950              	 .loc 2 279 0
+ 951              	 .cfi_startproc
+ 952 0000 80B5     	 push {r7,lr}
+ 953              	.LCFI18:
+ 954              	 .cfi_def_cfa_offset 8
+ 955              	 .cfi_offset 7,-8
+ 956              	 .cfi_offset 14,-4
+ 957 0002 82B0     	 sub sp,sp,#8
+ 958              	.LCFI19:
+ 959              	 .cfi_def_cfa_offset 16
+ 960 0004 00AF     	 add r7,sp,#0
+ 961              	.LCFI20:
+ 962              	 .cfi_def_cfa_register 7
+ 963 0006 7860     	 str r0,[r7,#4]
+ 964 0008 3960     	 str r1,[r7]
+ 280:../DeviceOperation/operation/op_config.c **** 	if(!CtrlButton->isExecuted)
+ 965              	 .loc 2 280 0
+ 966 000a 3B68     	 ldr r3,[r7]
+ 967 000c 1B79     	 ldrb r3,[r3,#4]
+ 968 000e 0122     	 mov r2,#1
+ 969 0010 5340     	 eor r3,r2
+ 970 0012 DBB2     	 uxtb r3,r3
+ 971 0014 002B     	 cmp r3,#0
+ 972 0016 0CD0     	 beq .L44
+ 281:../DeviceOperation/operation/op_config.c **** 	{
+ 282:../DeviceOperation/operation/op_config.c **** 		CtrlButton->isEnabled	= true;
+ 973              	 .loc 2 282 0
+ 974 0018 3B68     	 ldr r3,[r7]
+ 975 001a 0122     	 mov r2,#1
+ 976 001c 9A70     	 strb r2,[r3,#2]
+ 283:../DeviceOperation/operation/op_config.c **** 		CtrlButton->cycle		= 1000;
+ 977              	 .loc 2 283 0
+ 978 001e 3B68     	 ldr r3,[r7]
+ 979 0020 FA22     	 mov r2,#250
+ 980 0022 9200     	 lsl r2,r2,#2
+ 981 0024 1A80     	 strh r2,[r3]
+ 284:../DeviceOperation/operation/op_config.c **** 		CtrlButton->isExecuted	= true;
+ 982              	 .loc 2 284 0
+ 983 0026 3B68     	 ldr r3,[r7]
+ 984 0028 0122     	 mov r2,#1
+ 985 002a 1A71     	 strb r2,[r3,#4]
+ 285:../DeviceOperation/operation/op_config.c **** 		CtrlButton->isTimeOut	= false;
+ 986              	 .loc 2 285 0
+ 987 002c 3B68     	 ldr r3,[r7]
+ 988 002e 0022     	 mov r2,#0
+ 989 0030 DA70     	 strb r2,[r3,#3]
+ 990              	.L44:
+ 286:../DeviceOperation/operation/op_config.c **** 	}
+ 287:../DeviceOperation/operation/op_config.c **** 
+ 288:../DeviceOperation/operation/op_config.c **** 	if(CtrlButton->isTimeOut)
+ 991              	 .loc 2 288 0
+ 992 0032 3B68     	 ldr r3,[r7]
+ 993 0034 DB78     	 ldrb r3,[r3,#3]
+ 994 0036 002B     	 cmp r3,#0
+ 995 0038 09D0     	 beq .L43
+ 289:../DeviceOperation/operation/op_config.c **** 	{
+ 290:../DeviceOperation/operation/op_config.c **** 		PDU_Switch_Relay(PDU_RELAY_KBAT, PDU_RELAY_OPEN);
+ 996              	 .loc 2 290 0
+ 997 003a 0020     	 mov r0,#0
+ 998 003c 0021     	 mov r1,#0
+ 999 003e FFF7FEFF 	 bl PDU_Switch_Relay
+ 291:../DeviceOperation/operation/op_config.c **** 		CtrlButton->isExecuted = false;
+ 1000              	 .loc 2 291 0
+ 1001 0042 3B68     	 ldr r3,[r7]
+ 1002 0044 0022     	 mov r2,#0
+ 1003 0046 1A71     	 strb r2,[r3,#4]
+ 292:../DeviceOperation/operation/op_config.c **** 		*state = OP_SETUP;
+ 1004              	 .loc 2 292 0
+ 1005 0048 7B68     	 ldr r3,[r7,#4]
+ 1006 004a 0022     	 mov r2,#0
+ 1007 004c 1A70     	 strb r2,[r3]
+ 1008              	.L43:
+ 293:../DeviceOperation/operation/op_config.c **** 	}
+ 294:../DeviceOperation/operation/op_config.c **** }
+ 1009              	 .loc 2 294 0
+ 1010 004e BD46     	 mov sp,r7
+ 1011 0050 02B0     	 add sp,sp,#8
+ 1012              	 
+ 1013 0052 80BD     	 pop {r7,pc}
+ 1014              	 .cfi_endproc
+ 1015              	.LFE367:
+ 1017              	 .section .text.OP_CheckingMode,"ax",%progbits
+ 1018              	 .align 2
+ 1019              	 .global OP_CheckingMode
+ 1020              	 .code 16
+ 1021              	 .thumb_func
+ 1023              	OP_CheckingMode:
+ 1024              	.LFB368:
+ 295:../DeviceOperation/operation/op_config.c **** void OP_CheckingMode(MISC_CTRL_FLAG_t *ctrlFlag)
+ 296:../DeviceOperation/operation/op_config.c **** {
+ 1025              	 .loc 2 296 0
+ 1026              	 .cfi_startproc
+ 1027 0000 80B5     	 push {r7,lr}
+ 1028              	.LCFI21:
+ 1029              	 .cfi_def_cfa_offset 8
+ 1030              	 .cfi_offset 7,-8
+ 1031              	 .cfi_offset 14,-4
+ 1032 0002 82B0     	 sub sp,sp,#8
+ 1033              	.LCFI22:
+ 1034              	 .cfi_def_cfa_offset 16
+ 1035 0004 00AF     	 add r7,sp,#0
+ 1036              	.LCFI23:
+ 1037              	 .cfi_def_cfa_register 7
+ 1038 0006 7860     	 str r0,[r7,#4]
+ 297:../DeviceOperation/operation/op_config.c **** 	/* Read Dip Switch */
+ 298:../DeviceOperation/operation/op_config.c **** 	(XMC_GPIO_GetInput(P4_2) == 1)?(ctrlFlag->isBypass_power_mode = true):
+ 1039              	 .loc 2 298 0
+ 1040 0008 1F4B     	 ldr r3,.L55
+ 1041 000a 181C     	 mov r0,r3
+ 1042 000c 0221     	 mov r1,#2
+ 1043 000e FFF7FEFF 	 bl XMC_GPIO_GetInput
+ 1044 0012 031E     	 sub r3,r0,#0
+ 1045 0014 012B     	 cmp r3,#1
+ 1046 0016 03D1     	 bne .L47
+ 1047              	 .loc 2 298 0 is_stmt 0 discriminator 1
+ 1048 0018 7B68     	 ldr r3,[r7,#4]
+ 1049 001a 0122     	 mov r2,#1
+ 1050 001c DA70     	 strb r2,[r3,#3]
+ 1051 001e 02E0     	 b .L48
+ 1052              	.L47:
+ 299:../DeviceOperation/operation/op_config.c **** 								   (ctrlFlag->isBypass_power_mode = false);
+ 1053              	 .loc 2 299 0 is_stmt 1 discriminator 2
+ 1054 0020 7B68     	 ldr r3,[r7,#4]
+ 1055 0022 0022     	 mov r2,#0
+ 1056 0024 DA70     	 strb r2,[r3,#3]
+ 1057              	.L48:
+ 300:../DeviceOperation/operation/op_config.c **** 	(XMC_GPIO_GetInput(P4_3) == 1)?(ctrlFlag->isAuto_mode = true):
+ 1058              	 .loc 2 300 0
+ 1059 0026 184B     	 ldr r3,.L55
+ 1060 0028 181C     	 mov r0,r3
+ 1061 002a 0321     	 mov r1,#3
+ 1062 002c FFF7FEFF 	 bl XMC_GPIO_GetInput
+ 1063 0030 031E     	 sub r3,r0,#0
+ 1064 0032 012B     	 cmp r3,#1
+ 1065 0034 03D1     	 bne .L49
+ 1066              	 .loc 2 300 0 is_stmt 0 discriminator 1
+ 1067 0036 7B68     	 ldr r3,[r7,#4]
+ 1068 0038 0122     	 mov r2,#1
+ 1069 003a 9A70     	 strb r2,[r3,#2]
+ 1070 003c 02E0     	 b .L50
+ 1071              	.L49:
+ 301:../DeviceOperation/operation/op_config.c **** 								   (ctrlFlag->isAuto_mode = false);
+ 1072              	 .loc 2 301 0 is_stmt 1 discriminator 2
+ 1073 003e 7B68     	 ldr r3,[r7,#4]
+ 1074 0040 0022     	 mov r2,#0
+ 1075 0042 9A70     	 strb r2,[r3,#2]
+ 1076              	.L50:
+ 302:../DeviceOperation/operation/op_config.c **** 	(XMC_GPIO_GetInput(P4_4) == 1)?(ctrlFlag->isChecking_peripheral = true):
+ 1077              	 .loc 2 302 0
+ 1078 0044 104B     	 ldr r3,.L55
+ 1079 0046 181C     	 mov r0,r3
+ 1080 0048 0421     	 mov r1,#4
+ 1081 004a FFF7FEFF 	 bl XMC_GPIO_GetInput
+ 1082 004e 031E     	 sub r3,r0,#0
+ 1083 0050 012B     	 cmp r3,#1
+ 1084 0052 03D1     	 bne .L51
+ 1085              	 .loc 2 302 0 is_stmt 0 discriminator 1
+ 1086 0054 7B68     	 ldr r3,[r7,#4]
+ 1087 0056 0122     	 mov r2,#1
+ 1088 0058 5A71     	 strb r2,[r3,#5]
+ 1089 005a 02E0     	 b .L52
+ 1090              	.L51:
+ 303:../DeviceOperation/operation/op_config.c **** 								   (ctrlFlag->isChecking_peripheral = false);
+ 1091              	 .loc 2 303 0 is_stmt 1 discriminator 2
+ 1092 005c 7B68     	 ldr r3,[r7,#4]
+ 1093 005e 0022     	 mov r2,#0
+ 1094 0060 5A71     	 strb r2,[r3,#5]
+ 1095              	.L52:
+ 304:../DeviceOperation/operation/op_config.c **** 	(XMC_GPIO_GetInput(P4_5) == 1)?(ctrlFlag->isForced_shutting_down = true):
+ 1096              	 .loc 2 304 0
+ 1097 0062 094B     	 ldr r3,.L55
+ 1098 0064 181C     	 mov r0,r3
+ 1099 0066 0521     	 mov r1,#5
+ 1100 0068 FFF7FEFF 	 bl XMC_GPIO_GetInput
+ 1101 006c 031E     	 sub r3,r0,#0
+ 1102 006e 012B     	 cmp r3,#1
+ 1103 0070 03D1     	 bne .L53
+ 1104              	 .loc 2 304 0 is_stmt 0 discriminator 1
+ 1105 0072 7B68     	 ldr r3,[r7,#4]
+ 1106 0074 0122     	 mov r2,#1
+ 1107 0076 1A71     	 strb r2,[r3,#4]
+ 1108 0078 02E0     	 b .L46
+ 1109              	.L53:
+ 305:../DeviceOperation/operation/op_config.c **** 								   (ctrlFlag->isForced_shutting_down = false);
+ 1110              	 .loc 2 305 0 is_stmt 1 discriminator 2
+ 1111 007a 7B68     	 ldr r3,[r7,#4]
+ 1112 007c 0022     	 mov r2,#0
+ 1113 007e 1A71     	 strb r2,[r3,#4]
+ 1114              	.L46:
+ 306:../DeviceOperation/operation/op_config.c **** }
+ 1115              	 .loc 2 306 0
+ 1116 0080 BD46     	 mov sp,r7
+ 1117 0082 02B0     	 add sp,sp,#8
+ 1118              	 
+ 1119 0084 80BD     	 pop {r7,pc}
+ 1120              	.L56:
+ 1121 0086 C046     	 .align 2
+ 1122              	.L55:
+ 1123 0088 00040440 	 .word 1074004992
+ 1124              	 .cfi_endproc
+ 1125              	.LFE368:
+ 1127              	 .section .text.OP_CheckingError,"ax",%progbits
+ 1128              	 .align 2
+ 1129              	 .global OP_CheckingError
+ 1130              	 .code 16
+ 1131              	 .thumb_func
+ 1133              	OP_CheckingError:
+ 1134              	.LFB369:
+ 307:../DeviceOperation/operation/op_config.c **** 
+ 308:../DeviceOperation/operation/op_config.c **** 
+ 309:../DeviceOperation/operation/op_config.c **** void OP_CheckingError(MISC_CTRL_FLAG_t *ctrlFlag, PCS_STATUS_t *pcsStatus,
+ 310:../DeviceOperation/operation/op_config.c **** 					  DCGRID_STATUS_t *gridStatus, ACINV_STATUS_t *invStatus,
+ 311:../DeviceOperation/operation/op_config.c **** 					  PVCONV_STATUS_t *pvStatus, BATCONV_STATUS_t *BatStatus)
+ 312:../DeviceOperation/operation/op_config.c **** {
+ 1135              	 .loc 2 312 0
+ 1136              	 .cfi_startproc
+ 1137 0000 80B5     	 push {r7,lr}
+ 1138              	.LCFI24:
+ 1139              	 .cfi_def_cfa_offset 8
+ 1140              	 .cfi_offset 7,-8
+ 1141              	 .cfi_offset 14,-4
+ 1142 0002 84B0     	 sub sp,sp,#16
+ 1143              	.LCFI25:
+ 1144              	 .cfi_def_cfa_offset 24
+ 1145 0004 00AF     	 add r7,sp,#0
+ 1146              	.LCFI26:
+ 1147              	 .cfi_def_cfa_register 7
+ 1148 0006 F860     	 str r0,[r7,#12]
+ 1149 0008 B960     	 str r1,[r7,#8]
+ 1150 000a 7A60     	 str r2,[r7,#4]
+ 1151 000c 3B60     	 str r3,[r7]
+ 313:../DeviceOperation/operation/op_config.c **** 	  /* Check if any system in Standby mode */
+ 314:../DeviceOperation/operation/op_config.c **** 	ctrlFlag->isStandby = pcsStatus->pcs_system_pcsIsStandBy 	 |\
+ 1152              	 .loc 2 314 0
+ 1153 000e BB68     	 ldr r3,[r7,#8]
+ 1154 0010 1B79     	 ldrb r3,[r3,#4]
+ 1155 0012 1A1C     	 mov r2,r3
+ 315:../DeviceOperation/operation/op_config.c **** 						  gridStatus->dcgrid_system_pcsIsStandBy |\
+ 1156              	 .loc 2 315 0
+ 1157 0014 7B68     	 ldr r3,[r7,#4]
+ 1158 0016 DB78     	 ldrb r3,[r3,#3]
+ 314:../DeviceOperation/operation/op_config.c **** 						  gridStatus->dcgrid_system_pcsIsStandBy |\
+ 1159              	 .loc 2 314 0
+ 1160 0018 1343     	 orr r3,r2
+ 316:../DeviceOperation/operation/op_config.c **** 						  invStatus->acinv_system_pcsIsStandBy	 |\
+ 1161              	 .loc 2 316 0
+ 1162 001a 3A68     	 ldr r2,[r7]
+ 1163 001c D278     	 ldrb r2,[r2,#3]
+ 315:../DeviceOperation/operation/op_config.c **** 						  gridStatus->dcgrid_system_pcsIsStandBy |\
+ 1164              	 .loc 2 315 0
+ 1165 001e 1343     	 orr r3,r2
+ 317:../DeviceOperation/operation/op_config.c **** 						  pvStatus->pvconv_system_pcsIsStandBy   |\
+ 1166              	 .loc 2 317 0
+ 1167 0020 BA69     	 ldr r2,[r7,#24]
+ 1168 0022 D278     	 ldrb r2,[r2,#3]
+ 316:../DeviceOperation/operation/op_config.c **** 						  invStatus->acinv_system_pcsIsStandBy	 |\
+ 1169              	 .loc 2 316 0
+ 1170 0024 1343     	 orr r3,r2
+ 318:../DeviceOperation/operation/op_config.c **** 						  BatStatus->batconv_system_pcsIsStandBy;
+ 1171              	 .loc 2 318 0
+ 1172 0026 FA69     	 ldr r2,[r7,#28]
+ 1173 0028 D278     	 ldrb r2,[r2,#3]
+ 317:../DeviceOperation/operation/op_config.c **** 						  pvStatus->pvconv_system_pcsIsStandBy   |\
+ 1174              	 .loc 2 317 0
+ 1175 002a 1343     	 orr r3,r2
+ 1176 002c 5A1E     	 sub r2,r3,#1
+ 1177 002e 9341     	 sbc r3,r3,r2
+ 1178 0030 DAB2     	 uxtb r2,r3
+ 314:../DeviceOperation/operation/op_config.c **** 						  gridStatus->dcgrid_system_pcsIsStandBy |\
+ 1179              	 .loc 2 314 0
+ 1180 0032 FB68     	 ldr r3,[r7,#12]
+ 1181 0034 5A70     	 strb r2,[r3,#1]
+ 319:../DeviceOperation/operation/op_config.c **** }
+ 1182              	 .loc 2 319 0
+ 1183 0036 BD46     	 mov sp,r7
+ 1184 0038 04B0     	 add sp,sp,#16
+ 1185              	 
+ 1186 003a 80BD     	 pop {r7,pc}
+ 1187              	 .cfi_endproc
+ 1188              	.LFE369:
+ 1190              	 .section .bss.isPrechargeExecuted.10835,"aw",%nobits
+ 1193              	isPrechargeExecuted.10835:
+ 1194 0000 00       	 .space 1
+ 1195              	 .section .bss.isPutToStandbyExecuted.10845,"aw",%nobits
+ 1198              	isPutToStandbyExecuted.10845:
+ 1199 0000 00       	 .space 1
+ 1200              	 .section .bss.isStandbyExecuted.10853,"aw",%nobits
+ 1203              	isStandbyExecuted.10853:
+ 1204 0000 00       	 .space 1
+ 1205              	 .text
+ 1206              	.Letext0:
+ 1207              	 .file 3 "d:\\software\\dave_4-4-2_64bit_2018-02-23\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1208              	 .file 4 "d:\\software\\dave_4-4-2_64bit_2018-02-23\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 1209              	 .file 5 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/CMSIS/Infineon/XMC1400_series/Include/XMC1400.h"
+ 1210              	 .file 6 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_can.h"
+ 1211              	 .file 7 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc1_gpio.h"
+ 1212              	 .file 8 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_ccu4.h"
+ 1213              	 .file 9 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_usic.h"
+ 1214              	 .file 10 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_uart.h"
+ 1215              	 .file 11 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_i2c.h"
+ 1216              	 .file 12 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_eru.h"
+ 1217              	 .file 13 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/miscellaneous/misc_operation.h"
+ 1218              	 .file 14 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/pcs/pcs_operation.h"
+ 1219              	 .file 15 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_vadc.h"
+ 1220              	 .file 16 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/pdu/pdu_operation.h"
+ 1221              	 .file 17 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/esp32/esp32_operation.h"
+ 1222              	 .file 18 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/infotainment/info_operation.h"
+ 1223              	 .file 19 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/geenix/geenix_operation.h"
+ 1224              	 .file 20 "../DeviceOperation/operation/op_config.h"
+ 1225              	 .file 21 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/CMSIS/Infineon/XMC1400_series/Include/system_XMC1400.h"
+ 1226              	 .file 22 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/pcs/pcs_operation_conf.h"
+ 1227              	 .file 23 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/miscellaneous/misc_operation_conf.h"
+ 1228              	 .file 24 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/esp32/esp32_operation_conf.h"
+ 1229              	 .file 25 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/pdu/pdu_operation_conf.h"
+ 1230              	 .file 26 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/infotainment/info_operation_conf.h"
+ 1231              	 .file 27 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/geenix/geenix_operation_conf.h"
+ 1232              	 .file 28 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/rs232/rs232_operation_conf.h"
+ 1233              	 .file 29 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceOperation/GlobalVariable/global_var.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 op_config.c
+    {standard input}:18     .text.XMC_GPIO_GetInput:00000000 $t
+    {standard input}:22     .text.XMC_GPIO_GetInput:00000000 XMC_GPIO_GetInput
+                            *COM*:00000008 pcs_button_config
+                            *COM*:00000008 CAN0_txd_config
+                            *COM*:00000008 CAN0_rxd_config
+                            *COM*:0000000c can_baud
+                            *COM*:00000020 msgObjToPCS
+                            *COM*:00000020 msgObjFromPCS
+                            *COM*:00000008 SLICE0_config
+                            *COM*:00000008 SLICE1_config
+                            *COM*:00000006 sysTickHandle
+                            *COM*:00000008 esp32_tx_config
+                            *COM*:00000008 esp32_rx_config
+                            *COM*:0000000c esp32_config
+                            *COM*:00000018 g_global_handle
+                            *COM*:00000014 g_group_handle
+                            *COM*:0000000c g_queue_handle
+                            *COM*:00000010 g_queue_entry
+                            *COM*:00000040 g_channel_handle
+                            *COM*:00000010 g_result_handle
+                            *COM*:00000008 adc_io
+                            *COM*:00000008 relay_KMP
+                            *COM*:00000008 relay_KMF
+                            *COM*:00000008 relay_KDSG
+                            *COM*:00000008 relay_KBAT
+                            *COM*:00000008 button_config
+                            *COM*:00000008 led_config
+                            *COM*:00000008 dipswitch_config
+                            *COM*:00000008 gpio_config
+                            *COM*:00000008 iic_config
+                            *COM*:00000008 eru1_etl2_config
+                            *COM*:00000004 eru1_ogu3_config
+                            *COM*:00000008 eru0_etl2_config
+                            *COM*:00000004 eru0_ogu2_config
+                            *COM*:00000008 rtc_sda_config
+                            *COM*:00000008 rtc_scl_config
+                            *COM*:00000008 eru_io_config
+                            *COM*:00000008 eru_mfp_config
+                            *COM*:00000008 geenix_sel_config
+                            *COM*:00000008 geenix_tx_config
+                            *COM*:00000008 geenix_rx_config
+                            *COM*:0000000c geenix_config
+                            *COM*:00000008 rs232_tx_config
+                            *COM*:00000008 rs232_rx_config
+                            *COM*:0000000c rs232_config
+                            *COM*:0000012c buffer
+                            *COM*:00000001 ErrorBeingHandled
+                            *COM*:00000001 flag_standby
+                            *COM*:00000001 IsPerformingPrecharge
+                            *COM*:00000001 recEspCommIsHalt
+                            *COM*:00000001 esp32IsHandShake
+                            *COM*:00000001 recbmsIsHandShake
+                            *COM*:00000001 sysTickFlag
+                            *COM*:00000001 system_start
+                            *COM*:00000008 pvHShake
+                            *COM*:00000008 esp32HShake
+                            *COM*:00000008 buttonHShake
+                            *COM*:00000006 controlFlag
+                            *COM*:00000001 flag_pcs
+                            *COM*:00000001 flag_pcsBlockIsStandby
+                            *COM*:00000004 pcsBmsStatus
+                            *COM*:00000008 bmsSensor
+                            *COM*:00000008 pcsVoltages
+                            *COM*:00000008 pcsCurrents
+                            *COM*:00000008 pcsPowers
+                            *COM*:00000004 pcsMiscs
+                            *COM*:00000005 pcsSystemStatus
+                            *COM*:00000004 pcsDCgridStatus
+                            *COM*:00000004 pcsACinvStatus
+                            *COM*:00000004 pcsPVconvStatus
+                            *COM*:00000004 pcsBatconvStatus
+                            *COM*:00000001 flag_pdu
+                            *COM*:00000001 flag_pdu_adc
+                            *COM*:00000008 pduSensorRaw
+                            *COM*:00000014 pduSensorAvg
+                            *COM*:00000010 pduSensor
+                            *COM*:00000001 flag_button
+                            *COM*:00000001 flag_error
+                            *COM*:00000001 flag_misc
+                            *COM*:00000001 flag_rs232
+                            *COM*:00000004 rtcDate
+                            *COM*:00000003 rtcTime
+                            *COM*:00000001 flag_rtc
+                            *COM*:00000001 flag_esp32
+                            *COM*:00000001 enable_bt
+                            *COM*:0000002c btData
+                            *COM*:0000005c esp32DataPack
+                            *COM*:00000008 batPackData
+                            *COM*:00000001 temporaryStatus
+                            *COM*:00000004 soc_f
+                            *COM*:00000004 ocv
+                            *COM*:00000001 genix_send
+                            *COM*:00000001 isPeriphMode
+                            *COM*:00000001 isStartHShake
+                            *COM*:00000001 isHShakeValid
+                            *COM*:000000c8 NTPdata
+                            *COM*:00000001 mcuState
+    {standard input}:157    .text.OP_SetupConnection:00000000 $t
+    {standard input}:162    .text.OP_SetupConnection:00000000 OP_SetupConnection
+    {standard input}:403    .text.OP_SetupConnection:00000170 $d
+    {standard input}:411    .text.OP_TurnOnPCS:00000000 $t
+    {standard input}:416    .text.OP_TurnOnPCS:00000000 OP_TurnOnPCS
+    {standard input}:597    .text.OP_TurnOnPCS:00000108 $d
+    {standard input}:1193   .bss.isPrechargeExecuted.10835:00000000 isPrechargeExecuted.10835
+    {standard input}:605    .text.OP_CheckingPCSStatus:00000000 $t
+    {standard input}:610    .text.OP_CheckingPCSStatus:00000000 OP_CheckingPCSStatus
+    {standard input}:758    .text.OP_CheckingPCSStatus:000000d4 $d
+    {standard input}:1198   .bss.isPutToStandbyExecuted.10845:00000000 isPutToStandbyExecuted.10845
+    {standard input}:765    .text.OP_PutSystemStandby:00000000 $t
+    {standard input}:770    .text.OP_PutSystemStandby:00000000 OP_PutSystemStandby
+    {standard input}:863    .text.OP_PutSystemStandby:0000007c $d
+    {standard input}:1203   .bss.isStandbyExecuted.10853:00000000 isStandbyExecuted.10853
+    {standard input}:869    .text.OP_HandlingPCSWarning:00000000 $t
+    {standard input}:874    .text.OP_HandlingPCSWarning:00000000 OP_HandlingPCSWarning
+    {standard input}:943    .text.OP_PutSystemShutDown:00000000 $t
+    {standard input}:948    .text.OP_PutSystemShutDown:00000000 OP_PutSystemShutDown
+    {standard input}:1018   .text.OP_CheckingMode:00000000 $t
+    {standard input}:1023   .text.OP_CheckingMode:00000000 OP_CheckingMode
+    {standard input}:1123   .text.OP_CheckingMode:00000088 $d
+    {standard input}:1128   .text.OP_CheckingError:00000000 $t
+    {standard input}:1133   .text.OP_CheckingError:00000000 OP_CheckingError
+    {standard input}:1194   .bss.isPrechargeExecuted.10835:00000000 $d
+    {standard input}:1199   .bss.isPutToStandbyExecuted.10845:00000000 $d
+    {standard input}:1204   .bss.isStandbyExecuted.10853:00000000 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+__aeabi_fcmpgt
+PDU_Switch_Relay
+INFO_RTCDateInit
+INFO_RTCTimeInit

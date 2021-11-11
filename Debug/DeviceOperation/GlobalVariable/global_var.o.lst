@@ -1,0 +1,299 @@
+   1              	 .cpu cortex-m0
+   2              	 .fpu softvfp
+   3              	 .eabi_attribute 20,1
+   4              	 .eabi_attribute 21,1
+   5              	 .eabi_attribute 23,3
+   6              	 .eabi_attribute 24,1
+   7              	 .eabi_attribute 25,1
+   8              	 .eabi_attribute 26,1
+   9              	 .eabi_attribute 30,6
+  10              	 .eabi_attribute 34,0
+  11              	 .eabi_attribute 18,4
+  12              	 .code 16
+  13              	 .file "global_var.c"
+  14              	 .text
+  15              	.Ltext0:
+  16              	 .cfi_sections .debug_frame
+  17              	 .comm pcs_button_config,8,4
+  18              	 .comm CAN0_txd_config,8,4
+  19              	 .comm CAN0_rxd_config,8,4
+  20              	 .comm can_baud,12,4
+  21              	 .comm msgObjToPCS,32,8
+  22              	 .comm msgObjFromPCS,32,8
+  23              	 .comm SLICE0_config,8,4
+  24              	 .comm SLICE1_config,8,4
+  25              	 .comm sysTickHandle,6,4
+  26              	 .comm esp32_tx_config,8,4
+  27              	 .comm esp32_rx_config,8,4
+  28              	 .comm esp32_config,12,4
+  29              	 .comm g_global_handle,24,4
+  30              	 .comm g_group_handle,20,4
+  31              	 .comm g_queue_handle,12,4
+  32              	 .comm g_queue_entry,16,4
+  33              	 .comm g_channel_handle,64,4
+  34              	 .comm g_result_handle,16,4
+  35              	 .comm adc_io,8,4
+  36              	 .comm relay_KMP,8,4
+  37              	 .comm relay_KMF,8,4
+  38              	 .comm relay_KDSG,8,4
+  39              	 .comm relay_KBAT,8,4
+  40              	 .comm button_config,8,4
+  41              	 .comm led_config,8,4
+  42              	 .comm dipswitch_config,8,4
+  43              	 .comm gpio_config,8,4
+  44              	 .comm iic_config,8,4
+  45              	 .comm eru1_etl2_config,8,4
+  46              	 .comm eru1_ogu3_config,4,4
+  47              	 .comm eru0_etl2_config,8,4
+  48              	 .comm eru0_ogu2_config,4,4
+  49              	 .comm rtc_sda_config,8,4
+  50              	 .comm rtc_scl_config,8,4
+  51              	 .comm eru_io_config,8,4
+  52              	 .comm eru_mfp_config,8,4
+  53              	 .comm geenix_sel_config,8,4
+  54              	 .comm geenix_tx_config,8,4
+  55              	 .comm geenix_rx_config,8,4
+  56              	 .comm geenix_config,12,4
+  57              	 .comm rs232_tx_config,8,4
+  58              	 .comm rs232_rx_config,8,4
+  59              	 .comm rs232_config,12,4
+  60              	 .comm buffer,300,4
+  61              	 .global ErrorBeingHandled
+  62              	 .section .bss.ErrorBeingHandled,"aw",%nobits
+  65              	ErrorBeingHandled:
+  66 0000 00       	 .space 1
+  67              	 .global flag_standby
+  68              	 .section .bss.flag_standby,"aw",%nobits
+  71              	flag_standby:
+  72 0000 00       	 .space 1
+  73              	 .global IsPerformingPrecharge
+  74              	 .section .bss.IsPerformingPrecharge,"aw",%nobits
+  77              	IsPerformingPrecharge:
+  78 0000 00       	 .space 1
+  79              	 .global recEspCommIsHalt
+  80              	 .section .data.recEspCommIsHalt,"aw",%progbits
+  83              	recEspCommIsHalt:
+  84 0000 01       	 .byte 1
+  85              	 .global esp32IsHandShake
+  86              	 .section .bss.esp32IsHandShake,"aw",%nobits
+  89              	esp32IsHandShake:
+  90 0000 00       	 .space 1
+  91              	 .global recbmsIsHandShake
+  92              	 .section .bss.recbmsIsHandShake,"aw",%nobits
+  95              	recbmsIsHandShake:
+  96 0000 00       	 .space 1
+  97              	 .comm sysTickFlag,1,1
+  98              	 .global system_start
+  99              	 .section .bss.system_start,"aw",%nobits
+ 102              	system_start:
+ 103 0000 00       	 .space 1
+ 104              	 .comm pvHShake,8,4
+ 105              	 .comm esp32HShake,8,4
+ 106              	 .comm buttonHShake,8,4
+ 107              	 .comm controlFlag,6,4
+ 108              	 .comm flag_pcs,1,1
+ 109              	 .comm flag_pcsBlockIsStandby,1,1
+ 110              	 .comm pcsBmsStatus,4,4
+ 111              	 .comm bmsSensor,8,4
+ 112              	 .comm pcsVoltages,8,4
+ 113              	 .comm pcsCurrents,8,4
+ 114              	 .comm pcsPowers,8,4
+ 115              	 .comm pcsMiscs,4,4
+ 116              	 .comm pcsSystemStatus,5,4
+ 117              	 .comm pcsDCgridStatus,4,4
+ 118              	 .comm pcsACinvStatus,4,4
+ 119              	 .comm pcsPVconvStatus,4,4
+ 120              	 .comm pcsBatconvStatus,4,4
+ 121              	 .comm flag_pdu,1,1
+ 122              	 .comm flag_pdu_adc,1,1
+ 123              	 .comm pduSensorRaw,8,4
+ 124              	 .comm pduSensorAvg,20,4
+ 125              	 .comm pduSensor,16,4
+ 126              	 .global flag_button
+ 127              	 .section .bss.flag_button,"aw",%nobits
+ 130              	flag_button:
+ 131 0000 00       	 .space 1
+ 132              	 .comm flag_error,1,1
+ 133              	 .global flag_misc
+ 134              	 .section .bss.flag_misc,"aw",%nobits
+ 137              	flag_misc:
+ 138 0000 00       	 .space 1
+ 139              	 .global flag_rs232
+ 140              	 .section .bss.flag_rs232,"aw",%nobits
+ 143              	flag_rs232:
+ 144 0000 00       	 .space 1
+ 145              	 .comm rtcDate,4,4
+ 146              	 .comm rtcTime,3,4
+ 147              	 .comm flag_rtc,1,1
+ 148              	 .comm flag_esp32,1,1
+ 149              	 .comm enable_bt,1,1
+ 150              	 .comm btData,44,4
+ 151              	 .comm esp32DataPack,92,4
+ 152              	 .comm batPackData,8,4
+ 153              	 .comm temporaryStatus,1,1
+ 154              	 .comm soc_f,4,4
+ 155              	 .comm ocv,4,4
+ 156              	 .global genix_send
+ 157              	 .section .bss.genix_send,"aw",%nobits
+ 160              	genix_send:
+ 161 0000 00       	 .space 1
+ 162              	 .global isPeriphMode
+ 163              	 .section .bss.isPeriphMode,"aw",%nobits
+ 166              	isPeriphMode:
+ 167 0000 00       	 .space 1
+ 168              	 .global isStartHShake
+ 169              	 .section .bss.isStartHShake,"aw",%nobits
+ 172              	isStartHShake:
+ 173 0000 00       	 .space 1
+ 174              	 .global isHShakeValid
+ 175              	 .section .bss.isHShakeValid,"aw",%nobits
+ 178              	isHShakeValid:
+ 179 0000 00       	 .space 1
+ 180              	 .comm NTPdata,200,4
+ 181              	 .global flag_geenix
+ 182              	 .section .bss.flag_geenix,"aw",%nobits
+ 185              	flag_geenix:
+ 186 0000 00       	 .space 1
+ 187              	 .text
+ 188              	.Letext0:
+ 189              	 .file 1 "d:\\software\\dave_4-4-2_64bit_2018-02-23\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 190              	 .file 2 "d:\\software\\dave_4-4-2_64bit_2018-02-23\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 191              	 .file 3 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/CMSIS/Infineon/XMC1400_series/Include/XMC1400.h"
+ 192              	 .file 4 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_can.h"
+ 193              	 .file 5 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_gpio.h"
+ 194              	 .file 6 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc1_gpio.h"
+ 195              	 .file 7 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_ccu4.h"
+ 196              	 .file 8 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_usic.h"
+ 197              	 .file 9 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_uart.h"
+ 198              	 .file 10 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_i2c.h"
+ 199              	 .file 11 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_eru.h"
+ 200              	 .file 12 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/miscellaneous/misc_operation.h"
+ 201              	 .file 13 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/pcs/pcs_operation.h"
+ 202              	 .file 14 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_vadc.h"
+ 203              	 .file 15 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/pdu/pdu_operation.h"
+ 204              	 .file 16 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/esp32/esp32_operation.h"
+ 205              	 .file 17 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/infotainment/info_operation.h"
+ 206              	 .file 18 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/geenix/geenix_operation.h"
+ 207              	 .file 19 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/CMSIS/Infineon/XMC1400_series/Include/system_XMC1400.h"
+ 208              	 .file 20 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/pcs/pcs_operation_conf.h"
+ 209              	 .file 21 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/miscellaneous/misc_operation_conf.h"
+ 210              	 .file 22 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/esp32/esp32_operation_conf.h"
+ 211              	 .file 23 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/pdu/pdu_operation_conf.h"
+ 212              	 .file 24 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/infotainment/info_operation_conf.h"
+ 213              	 .file 25 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/geenix/geenix_operation_conf.h"
+ 214              	 .file 26 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/DeviceObject/rs232/rs232_operation_conf.h"
+ 215              	 .file 27 "../DeviceOperation/GlobalVariable/global_var.c"
+ 216              	 .file 28 "../DeviceOperation/GlobalVariable/global_var.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 global_var.c
+                            *COM*:00000008 pcs_button_config
+                            *COM*:00000008 CAN0_txd_config
+                            *COM*:00000008 CAN0_rxd_config
+                            *COM*:0000000c can_baud
+                            *COM*:00000020 msgObjToPCS
+                            *COM*:00000020 msgObjFromPCS
+                            *COM*:00000008 SLICE0_config
+                            *COM*:00000008 SLICE1_config
+                            *COM*:00000006 sysTickHandle
+                            *COM*:00000008 esp32_tx_config
+                            *COM*:00000008 esp32_rx_config
+                            *COM*:0000000c esp32_config
+                            *COM*:00000018 g_global_handle
+                            *COM*:00000014 g_group_handle
+                            *COM*:0000000c g_queue_handle
+                            *COM*:00000010 g_queue_entry
+                            *COM*:00000040 g_channel_handle
+                            *COM*:00000010 g_result_handle
+                            *COM*:00000008 adc_io
+                            *COM*:00000008 relay_KMP
+                            *COM*:00000008 relay_KMF
+                            *COM*:00000008 relay_KDSG
+                            *COM*:00000008 relay_KBAT
+                            *COM*:00000008 button_config
+                            *COM*:00000008 led_config
+                            *COM*:00000008 dipswitch_config
+                            *COM*:00000008 gpio_config
+                            *COM*:00000008 iic_config
+                            *COM*:00000008 eru1_etl2_config
+                            *COM*:00000004 eru1_ogu3_config
+                            *COM*:00000008 eru0_etl2_config
+                            *COM*:00000004 eru0_ogu2_config
+                            *COM*:00000008 rtc_sda_config
+                            *COM*:00000008 rtc_scl_config
+                            *COM*:00000008 eru_io_config
+                            *COM*:00000008 eru_mfp_config
+                            *COM*:00000008 geenix_sel_config
+                            *COM*:00000008 geenix_tx_config
+                            *COM*:00000008 geenix_rx_config
+                            *COM*:0000000c geenix_config
+                            *COM*:00000008 rs232_tx_config
+                            *COM*:00000008 rs232_rx_config
+                            *COM*:0000000c rs232_config
+                            *COM*:0000012c buffer
+    {standard input}:65     .bss.ErrorBeingHandled:00000000 ErrorBeingHandled
+    {standard input}:66     .bss.ErrorBeingHandled:00000000 $d
+    {standard input}:71     .bss.flag_standby:00000000 flag_standby
+    {standard input}:72     .bss.flag_standby:00000000 $d
+    {standard input}:77     .bss.IsPerformingPrecharge:00000000 IsPerformingPrecharge
+    {standard input}:78     .bss.IsPerformingPrecharge:00000000 $d
+    {standard input}:83     .data.recEspCommIsHalt:00000000 recEspCommIsHalt
+    {standard input}:89     .bss.esp32IsHandShake:00000000 esp32IsHandShake
+    {standard input}:90     .bss.esp32IsHandShake:00000000 $d
+    {standard input}:95     .bss.recbmsIsHandShake:00000000 recbmsIsHandShake
+    {standard input}:96     .bss.recbmsIsHandShake:00000000 $d
+                            *COM*:00000001 sysTickFlag
+    {standard input}:102    .bss.system_start:00000000 system_start
+    {standard input}:103    .bss.system_start:00000000 $d
+                            *COM*:00000008 pvHShake
+                            *COM*:00000008 esp32HShake
+                            *COM*:00000008 buttonHShake
+                            *COM*:00000006 controlFlag
+                            *COM*:00000001 flag_pcs
+                            *COM*:00000001 flag_pcsBlockIsStandby
+                            *COM*:00000004 pcsBmsStatus
+                            *COM*:00000008 bmsSensor
+                            *COM*:00000008 pcsVoltages
+                            *COM*:00000008 pcsCurrents
+                            *COM*:00000008 pcsPowers
+                            *COM*:00000004 pcsMiscs
+                            *COM*:00000005 pcsSystemStatus
+                            *COM*:00000004 pcsDCgridStatus
+                            *COM*:00000004 pcsACinvStatus
+                            *COM*:00000004 pcsPVconvStatus
+                            *COM*:00000004 pcsBatconvStatus
+                            *COM*:00000001 flag_pdu
+                            *COM*:00000001 flag_pdu_adc
+                            *COM*:00000008 pduSensorRaw
+                            *COM*:00000014 pduSensorAvg
+                            *COM*:00000010 pduSensor
+    {standard input}:130    .bss.flag_button:00000000 flag_button
+    {standard input}:131    .bss.flag_button:00000000 $d
+                            *COM*:00000001 flag_error
+    {standard input}:137    .bss.flag_misc:00000000 flag_misc
+    {standard input}:138    .bss.flag_misc:00000000 $d
+    {standard input}:143    .bss.flag_rs232:00000000 flag_rs232
+    {standard input}:144    .bss.flag_rs232:00000000 $d
+                            *COM*:00000004 rtcDate
+                            *COM*:00000003 rtcTime
+                            *COM*:00000001 flag_rtc
+                            *COM*:00000001 flag_esp32
+                            *COM*:00000001 enable_bt
+                            *COM*:0000002c btData
+                            *COM*:0000005c esp32DataPack
+                            *COM*:00000008 batPackData
+                            *COM*:00000001 temporaryStatus
+                            *COM*:00000004 soc_f
+                            *COM*:00000004 ocv
+    {standard input}:160    .bss.genix_send:00000000 genix_send
+    {standard input}:161    .bss.genix_send:00000000 $d
+    {standard input}:166    .bss.isPeriphMode:00000000 isPeriphMode
+    {standard input}:167    .bss.isPeriphMode:00000000 $d
+    {standard input}:172    .bss.isStartHShake:00000000 isStartHShake
+    {standard input}:173    .bss.isStartHShake:00000000 $d
+    {standard input}:178    .bss.isHShakeValid:00000000 isHShakeValid
+    {standard input}:179    .bss.isHShakeValid:00000000 $d
+                            *COM*:000000c8 NTPdata
+    {standard input}:185    .bss.flag_geenix:00000000 flag_geenix
+    {standard input}:186    .bss.flag_geenix:00000000 $d
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,145 @@
+   1              	 .cpu cortex-m0
+   2              	 .fpu softvfp
+   3              	 .eabi_attribute 20,1
+   4              	 .eabi_attribute 21,1
+   5              	 .eabi_attribute 23,3
+   6              	 .eabi_attribute 24,1
+   7              	 .eabi_attribute 25,1
+   8              	 .eabi_attribute 26,1
+   9              	 .eabi_attribute 30,6
+  10              	 .eabi_attribute 34,0
+  11              	 .eabi_attribute 18,4
+  12              	 .code 16
+  13              	 .file "info_operation_conf.c"
+  14              	 .text
+  15              	.Ltext0:
+  16              	 .cfi_sections .debug_frame
+  17              	 .global button_config
+  18              	 .section .data.button_config,"aw",%progbits
+  19              	 .align 2
+  22              	button_config:
+  23 0000 04       	 .byte 4
+  24 0001 00000000 	 .space 7
+  24      000000
+  25              	 .global led_config
+  26              	 .section .data.led_config,"aw",%progbits
+  27              	 .align 2
+  30              	led_config:
+  31 0000 80       	 .byte -128
+  32 0001 000000   	 .space 3
+  33 0004 01000000 	 .word 1
+  34              	 .global dipswitch_config
+  35              	 .section .bss.dipswitch_config,"aw",%nobits
+  36              	 .align 2
+  39              	dipswitch_config:
+  40 0000 00000000 	 .space 8
+  40      00000000 
+  41              	 .global gpio_config
+  42              	 .section .data.gpio_config,"aw",%progbits
+  43              	 .align 2
+  46              	gpio_config:
+  47 0000 80       	 .byte -128
+  48 0001 000000   	 .space 3
+  49 0004 00000100 	 .word 65536
+  50              	 .global iic_config
+  51              	 .section .data.iic_config,"aw",%progbits
+  52              	 .align 2
+  55              	iic_config:
+  56 0000 A0860100 	 .word 100000
+  57 0004 00000000 	 .space 4
+  58              	 .global eru1_etl2_config
+  59              	 .section .data.eru1_etl2_config,"aw",%progbits
+  60              	 .align 2
+  63              	eru1_etl2_config:
+  64 0000 01000000 	 .word 1
+  65 0004 39       	 .byte 57
+  66 0005 00       	 .byte 0
+  67 0006 0000     	 .space 2
+  68              	 .global eru1_ogu3_config
+  69              	 .section .data.eru1_ogu3_config,"aw",%progbits
+  70              	 .align 2
+  73              	eru1_ogu3_config:
+  74 0000 10       	 .byte 16
+  75 0001 000000   	 .space 3
+  76              	 .global eru0_etl2_config
+  77              	 .section .data.eru0_etl2_config,"aw",%progbits
+  78              	 .align 2
+  81              	eru0_etl2_config:
+  82 0000 00000000 	 .word 0
+  83 0004 29       	 .byte 41
+  84 0005 01       	 .byte 1
+  85 0006 0000     	 .space 2
+  86              	 .global eru0_ogu2_config
+  87              	 .section .data.eru0_ogu2_config,"aw",%progbits
+  88              	 .align 2
+  91              	eru0_ogu2_config:
+  92 0000 10       	 .byte 16
+  93 0001 000000   	 .space 3
+  94              	 .global rtc_sda_config
+  95              	 .section .data.rtc_sda_config,"aw",%progbits
+  96              	 .align 2
+  99              	rtc_sda_config:
+ 100 0000 E4       	 .byte -28
+ 101 0001 00000000 	 .space 7
+ 101      000000
+ 102              	 .global rtc_scl_config
+ 103              	 .section .data.rtc_scl_config,"aw",%progbits
+ 104              	 .align 2
+ 107              	rtc_scl_config:
+ 108 0000 E0       	 .byte -32
+ 109 0001 00000000 	 .space 7
+ 109      000000
+ 110              	 .global eru_io_config
+ 111              	 .section .bss.eru_io_config,"aw",%nobits
+ 112              	 .align 2
+ 115              	eru_io_config:
+ 116 0000 00000000 	 .space 8
+ 116      00000000 
+ 117              	 .global eru_mfp_config
+ 118              	 .section .data.eru_mfp_config,"aw",%progbits
+ 119              	 .align 2
+ 122              	eru_mfp_config:
+ 123 0000 08       	 .byte 8
+ 124 0001 00000000 	 .space 7
+ 124      000000
+ 125              	 .text
+ 126              	.Letext0:
+ 127              	 .file 1 "d:\\software\\dave_4-4-2_64bit_2018-02-23\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 128              	 .file 2 "d:\\software\\dave_4-4-2_64bit_2018-02-23\\dave_4-4-2_64bit_2018-02-23\\dave-ide-4.4.2-64bit\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 129              	 .file 3 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_usic.h"
+ 130              	 .file 4 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_gpio.h"
+ 131              	 .file 5 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc1_gpio.h"
+ 132              	 .file 6 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_i2c.h"
+ 133              	 .file 7 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/XMCLib/inc/xmc_eru.h"
+ 134              	 .file 8 "C:/Users/Lenovo/workspace/dave_workspace/SOLAR_TOWER/Libraries/CMSIS/Infineon/XMC1400_series/Include/system_XMC1400.h"
+ 135              	 .file 9 "../DeviceObject/infotainment/info_operation_conf.c"
+DEFINED SYMBOLS
+                            *ABS*:00000000 info_operation_conf.c
+    {standard input}:22     .data.button_config:00000000 button_config
+    {standard input}:19     .data.button_config:00000000 $d
+    {standard input}:30     .data.led_config:00000000 led_config
+    {standard input}:27     .data.led_config:00000000 $d
+    {standard input}:39     .bss.dipswitch_config:00000000 dipswitch_config
+    {standard input}:36     .bss.dipswitch_config:00000000 $d
+    {standard input}:46     .data.gpio_config:00000000 gpio_config
+    {standard input}:43     .data.gpio_config:00000000 $d
+    {standard input}:55     .data.iic_config:00000000 iic_config
+    {standard input}:52     .data.iic_config:00000000 $d
+    {standard input}:63     .data.eru1_etl2_config:00000000 eru1_etl2_config
+    {standard input}:60     .data.eru1_etl2_config:00000000 $d
+    {standard input}:73     .data.eru1_ogu3_config:00000000 eru1_ogu3_config
+    {standard input}:70     .data.eru1_ogu3_config:00000000 $d
+    {standard input}:81     .data.eru0_etl2_config:00000000 eru0_etl2_config
+    {standard input}:78     .data.eru0_etl2_config:00000000 $d
+    {standard input}:91     .data.eru0_ogu2_config:00000000 eru0_ogu2_config
+    {standard input}:88     .data.eru0_ogu2_config:00000000 $d
+    {standard input}:99     .data.rtc_sda_config:00000000 rtc_sda_config
+    {standard input}:96     .data.rtc_sda_config:00000000 $d
+    {standard input}:107    .data.rtc_scl_config:00000000 rtc_scl_config
+    {standard input}:104    .data.rtc_scl_config:00000000 $d
+    {standard input}:115    .bss.eru_io_config:00000000 eru_io_config
+    {standard input}:112    .bss.eru_io_config:00000000 $d
+    {standard input}:122    .data.eru_mfp_config:00000000 eru_mfp_config
+    {standard input}:119    .data.eru_mfp_config:00000000 $d
+
+NO UNDEFINED SYMBOLS
